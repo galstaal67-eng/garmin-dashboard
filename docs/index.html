@@ -2,7 +2,13 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="גרמין">
+<meta name="format-detection" content="telephone=no">
 <title>דשבורד גרמין</title>
 <style>
 :root {
@@ -40,24 +46,36 @@
 body {
   margin: 0; background: var(--page); color: var(--ink);
   font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent;
 }
-main { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
-header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
-h1 { font-size: 24px; margin: 0; }
+main {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 max(16px, env(safe-area-inset-right)) calc(48px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+}
+header {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px;
+  margin: 0 -16px 16px; padding: calc(16px + env(safe-area-inset-top)) 16px 12px;
+  background: color-mix(in srgb, var(--page) 88%, transparent);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent; transition: border-color .2s;
+}
+header.scrolled { border-bottom-color: var(--ring); }
+h1 { font-size: 24px; margin: 0; line-height: 1.2; }
 h2 { font-size: 17px; margin: 32px 0 12px; }
 .sub { color: var(--ink-2); font-size: 13px; }
 .lock { max-width: 360px; margin: 64px auto; background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 24px; }
 .lock h2 { margin: 0 0 4px; }
 .lock p { color: var(--ink-2); margin: 0 0 16px; }
-.lock input[type=password] { width: 100%; font: inherit; padding: 9px 12px; border: 1px solid var(--axis); border-radius: 8px; background: var(--page); color: var(--ink); }
+.lock input[type=password] { width: 100%; font: inherit; font-size: 16px; padding: 10px 12px; border: 1px solid var(--axis); border-radius: 8px; background: var(--page); color: var(--ink); }
 .lock label.remember { display: flex; gap: 8px; align-items: center; margin: 12px 0 16px; color: var(--ink-2); }
-.lock button { width: 100%; font: inherit; font-weight: 600; padding: 9px; border: 0; border-radius: 8px; background: var(--ink); color: var(--surface); cursor: pointer; }
+.lock button { width: 100%; font: inherit; font-weight: 600; padding: 11px; border: 0; border-radius: 8px; background: var(--ink); color: var(--surface); cursor: pointer; }
 .lock button:disabled { opacity: .6; cursor: wait; }
 .lock .error { color: var(--bad); min-height: 1.5em; margin-top: 10px; font-size: 13px; }
 [hidden] { display: none !important; }
 .banner { background: var(--surface); border: 1px solid var(--ring); border-inline-start: 4px solid var(--s4); padding: 10px 14px; border-radius: 8px; margin-bottom: 16px; color: var(--ink-2); }
 .range { display: inline-flex; border: 1px solid var(--ring); border-radius: 8px; overflow: hidden; background: var(--surface); }
-.range button { border: 0; background: none; color: var(--ink-2); padding: 7px 14px; font: inherit; cursor: pointer; }
+.range button { border: 0; background: none; color: var(--ink-2); min-height: 38px; padding: 0 14px; font: inherit; cursor: pointer; touch-action: manipulation; }
 .range button + button { border-inline-start: 1px solid var(--ring); }
 .range button[aria-pressed="true"] { background: var(--ink); color: var(--surface); font-weight: 600; }
 .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
@@ -65,7 +83,8 @@ h2 { font-size: 17px; margin: 32px 0 12px; }
 .tile .label { color: var(--ink-2); font-size: 13px; }
 .tile .value { font-size: 26px; font-weight: 600; margin-top: 2px; }
 .tile .value small { font-size: 14px; font-weight: 400; color: var(--ink-2); }
-.tile .delta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.tile .delta { font-size: 12px; color: var(--muted); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tiles-note { color: var(--muted); font-size: 12px; margin-top: 8px; }
 .delta .up { color: var(--good); } .delta .down { color: var(--bad); }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 12px; }
 .card { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 14px 16px; min-width: 0; }
@@ -77,12 +96,39 @@ h2 { font-size: 17px; margin: 32px 0 12px; }
 .card.wide .chart { height: 280px; }
 .empty { color: var(--muted); padding: 40px 0; text-align: center; }
 .table-wrap { overflow-x: auto; }
+.act-list { list-style: none; margin: 0; padding: 0; display: none; }
+.act-list li { padding: 10px 0; border-bottom: 1px solid var(--grid); }
+.act-list li:last-child { border-bottom: 0; }
+.act-list .row1 { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.act-list .name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.act-list .when { color: var(--muted); font-size: 12px; white-space: nowrap; }
+.act-list .stats { color: var(--ink-2); font-size: 13px; margin-top: 2px; font-variant-numeric: tabular-nums; }
+.more { display: block; width: 100%; margin-top: 10px; min-height: 40px; font: inherit; color: var(--ink); background: none; border: 1px solid var(--ring); border-radius: 8px; cursor: pointer; }
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
 th, td { text-align: start; padding: 7px 8px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
 th { color: var(--ink-2); font-weight: 600; }
 td.num { font-variant-numeric: tabular-nums; }
 .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-inline-end: 6px; vertical-align: 0; }
-@media (max-width: 420px) { .grid { grid-template-columns: 1fr; } .tile .value { font-size: 22px; } }
+@media (max-width: 640px) {
+  header { gap: 10px; padding-bottom: 10px; }
+  header > div:first-child { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; width: 100%; }
+  h1 { font-size: 20px; }
+  .sub { font-size: 12px; }
+  .range { display: flex; width: 100%; }
+  .range button { flex: 1; padding: 0 6px; }
+  h2 { font-size: 16px; margin: 24px 0 10px; }
+  .tiles { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .tile { padding: 10px 12px; border-radius: 10px; }
+  .tile .label { font-size: 12px; }
+  .tile .value { font-size: 22px; }
+  .tile .value small { font-size: 12px; }
+  .grid, .grid.two { grid-template-columns: 1fr; gap: 8px; }
+  .card { padding: 12px; border-radius: 10px; }
+  .chart, .card.wide .chart { height: 210px; }
+  .table-wrap { display: none; }
+  .act-list { display: block; }
+  .lock { margin: 32px auto; }
+}
 </style>
 </head>
 <body>
@@ -92,7 +138,7 @@ td.num { font-variant-numeric: tabular-nums; }
       <h1>דשבורד גרמין</h1>
       <div class="sub" id="updated"></div>
     </div>
-    <div class="range" role="group" aria-label="טווח זמן">
+    <div class="range" id="range" role="group" aria-label="טווח זמן" hidden>
       <button data-days="30">30 יום</button>
       <button data-days="90" aria-pressed="true">90 יום</button>
       <button data-days="365">שנה</button>
@@ -113,26 +159,29 @@ td.num { font-variant-numeric: tabular-nums; }
   <div id="content" hidden>
 
   <section class="tiles" id="tiles"></section>
+  <div class="tiles-note" id="tiles-note"></div>
 
   <h2>אימונים</h2>
   <div class="grid">
     <div class="card wide"><h3>שעות אימון בשבוע לפי סוג</h3><div class="note">שבוע מתחיל ביום ראשון</div><div class="chart"><canvas id="c-weekly"></canvas></div></div>
-    <div class="card wide"><h3>אימונים אחרונים</h3><div class="note" id="act-note"></div><div class="table-wrap"><table id="act-table"></table></div></div>
+    <div class="card wide"><h3>אימונים אחרונים</h3><div class="note" id="act-note"></div><div class="table-wrap"><table id="act-table"></table></div><ul class="act-list" id="act-list"></ul><button class="more" id="act-more" hidden>הצגת עוד</button></div>
   </div>
 
   <h2>פעילות יומית</h2>
   <div class="grid two">
     <div class="card wide"><h3>צעדים</h3><div class="note" id="steps-note"></div><div class="chart"><canvas id="c-steps"></canvas></div></div>
-    <div class="card"><h3>דופק מנוחה</h3><div class="note">פעימות לדקה</div><div class="chart"><canvas id="c-rhr"></canvas></div></div>
+    <div class="card"><h3>דופק מנוחה</h3><div class="note" id="rhr-note">פעימות לדקה</div><div class="chart"><canvas id="c-rhr"></canvas></div></div>
     <div class="card"><h3>דקות עצימות בשבוע</h3><div class="note">יעד ארגון הבריאות העולמי: 150 דקות (עצימה נספרת כפול)</div><div class="chart"><canvas id="c-intensity"></canvas></div></div>
   </div>
 
+  <section id="body-section">
   <h2>משקל והרכב גוף</h2>
   <div class="grid">
-    <div class="card"><h3>משקל</h3><div class="note">ק״ג</div><div class="chart"><canvas id="c-weight"></canvas></div></div>
-    <div class="card"><h3>אחוז שומן</h3><div class="note">%</div><div class="chart"><canvas id="c-fat"></canvas></div></div>
-    <div class="card"><h3>מסת שריר</h3><div class="note">ק״ג</div><div class="chart"><canvas id="c-muscle"></canvas></div></div>
+    <div class="card" data-field="weight_kg"><h3>משקל</h3><div class="note">ק״ג</div><div class="chart"><canvas id="c-weight"></canvas></div></div>
+    <div class="card" data-field="body_fat_pct"><h3>אחוז שומן</h3><div class="note">%</div><div class="chart"><canvas id="c-fat"></canvas></div></div>
+    <div class="card" data-field="muscle_kg"><h3>מסת שריר</h3><div class="note">ק״ג</div><div class="chart"><canvas id="c-muscle"></canvas></div></div>
   </div>
+  </section>
   </div>
 </main>
 
@@ -154,6 +203,8 @@ const TYPE_LABELS = {
   cycling: "רכיבה", road_biking: "רכיבת כביש", mountain_biking: "רכיבת שטח", indoor_cycling: "אופני כושר", virtual_ride: "רכיבה וירטואלית",
   lap_swimming: "שחייה בבריכה", open_water_swimming: "שחייה במים פתוחים", walking: "הליכה", hiking: "טיול",
   strength_training: "אימון כוח", yoga: "יוגה", hiit: "HIIT", cardio: "קרדיו", elliptical: "אליפטי", indoor_rowing: "חתירה",
+  virtual_run: "ריצה וירטואלית", gravel_cycling: "רכיבת גראבל", indoor_walking: "הליכה בפנים", swimming: "שחייה",
+  boxing: "אגרוף", kickboxing: "קיקבוקס", pilates: "פילאטיס", rowing: "חתירה", stair_climbing: "עליית מדרגות", other: "אחר",
 };
 const categoryOf = type => CATEGORIES.find(c => c.match(type || ""));
 
@@ -220,7 +271,9 @@ function weeks(from, to) {
 
 // ---------- state ----------
 let rangeDays = 90;
+let actLimit = 10;
 const charts = {};
+const NARROW = matchMedia("(max-width: 640px)");
 
 function bounds() {
   const lastDates = [...DATA.daily, ...DATA.activities, ...DATA.body].map(r => toTime(r.date));
@@ -233,7 +286,7 @@ function bounds() {
 function tile(label, value, unit, delta) {
   return `<div class="tile"><div class="label">${label}</div><div class="value">${value}${unit ? ` <small>${unit}</small>` : ""}</div>${delta ? `<div class="delta">${delta}</div>` : ""}</div>`;
 }
-function deltaText(cur, prev, { digits = 0, unit = "", goodWhenUp = true, suffix = "מהתקופה הקודמת" } = {}) {
+function deltaText(cur, prev, { digits = 0, unit = "", goodWhenUp = true, suffix = "" } = {}) {
   if (cur == null || prev == null || rangeDays === 0) return "";
   const d = cur - prev;
   if (Math.abs(d) < Math.pow(10, -digits) / 2) return `ללא שינוי ${suffix}`;
@@ -244,7 +297,8 @@ function deltaText(cur, prev, { digits = 0, unit = "", goodWhenUp = true, suffix
 function renderTiles({ from, to, prevFrom }) {
   const acts = inRange(DATA.activities, from, to), prevActs = prevFrom ? inRange(DATA.activities, prevFrom, from) : [];
   const days = inRange(DATA.daily, from, to), prevDays = prevFrom ? inRange(DATA.daily, prevFrom, from) : [];
-  const body = inRange(DATA.body, from, to);
+  const body = inRange(DATA.body, from, to).filter(b => b.weight_kg != null);
+  const latestW = DATA.body.filter(b => b.weight_kg != null).at(-1);
   const hasPrev = prevFrom && (prevActs.length || prevDays.length);
   const p = v => hasPrev ? v : null;
   const km = sum(acts, a => a.distance_km), prevKm = sum(prevActs, a => a.distance_km);
@@ -258,26 +312,28 @@ function renderTiles({ from, to, prevFrom }) {
     tile("זמן אימון", fmt(hrs, 1), "שעות", deltaText(hrs, p(prevHrs), { digits: 1, unit: " ש׳" })),
     tile("צעדים ביום (ממוצע)", fmt(steps), "", deltaText(steps, p(prevSteps))),
     tile("דופק מנוחה (ממוצע)", fmt(rhr), "bpm", deltaText(rhr, p(prevRhr), { goodWhenUp: false })),
-    tile("משקל אחרון", lastW ? fmt(lastW.weight_kg, 1) : "–", "ק״ג",
-      lastW && firstW !== lastW ? deltaText(lastW.weight_kg, firstW.weight_kg, { digits: 1, unit: " ק״ג", goodWhenUp: false, suffix: "מתחילת הטווח" }) : (lastW ? longDate(toTime(lastW.date)) : "")),
+    tile("משקל אחרון", latestW ? fmt(latestW.weight_kg, 1) : "–", latestW ? "ק״ג" : "",
+      lastW && firstW !== lastW ? deltaText(lastW.weight_kg, firstW.weight_kg, { digits: 1, unit: " ק״ג", goodWhenUp: false, suffix: "בטווח" })
+        : (latestW ? longDate(toTime(latestW.date)) : "אין שקילות")),
   ].join("");
+  document.getElementById("tiles-note").textContent = hasPrev ? `▲▼ השינוי לעומת ${rangeDays} הימים שלפני כן` : "";
 }
 
 // ---------- charts ----------
 function baseOptions({ stacked = false, yTitle = "", timeX = false } = {}) {
-  const muted = css("--muted"), grid = css("--grid"), axis = css("--axis");
+  const muted = css("--muted"), grid = css("--grid"), axis = css("--axis"), narrow = NARROW.matches;
   return {
     responsive: true, maintainAspectRatio: false, animation: false,
     interaction: { mode: timeX ? "nearest" : "index", intersect: false, axis: "x" },
     plugins: {
-      legend: { display: false, rtl: true, labels: { color: css("--ink-2"), usePointStyle: true, pointStyle: "circle", boxWidth: 8, boxHeight: 8, padding: 14 } },
+      legend: { display: false, rtl: true, labels: { color: css("--ink-2"), usePointStyle: true, pointStyle: "circle", boxWidth: 8, boxHeight: 8, padding: narrow ? 10 : 14, font: { size: narrow ? 11 : 12 } } },
       tooltip: { rtl: true, textDirection: "rtl", backgroundColor: css("--ink"), titleColor: css("--surface"), bodyColor: css("--surface"),
         padding: 10, cornerRadius: 8, usePointStyle: true, boxWidth: 8, boxHeight: 8 },
     },
     scales: {
-      x: { stacked, grid: { display: false }, border: { color: axis }, ticks: { color: muted, maxRotation: 0, autoSkipPadding: 16 } },
-      y: { stacked, beginAtZero: !timeX, grid: { color: grid }, border: { display: false }, ticks: { color: muted, maxTicksLimit: 5 },
-        title: { display: !!yTitle, text: yTitle, color: muted } },
+      x: { stacked, grid: { display: false }, border: { color: axis }, ticks: { color: muted, maxRotation: 0, autoSkipPadding: narrow ? 12 : 16, font: { size: narrow ? 10 : 12 } } },
+      y: { stacked, beginAtZero: !timeX, grid: { color: grid }, border: { display: false }, ticks: { color: muted, maxTicksLimit: narrow ? 4 : 5, font: { size: narrow ? 10 : 12 } },
+        title: { display: !!yTitle && !narrow, text: yTitle, color: muted } },
     },
   };
 }
@@ -320,8 +376,17 @@ function renderWeekly({ from, to }) {
 
 function renderActivitiesTable({ from, to }) {
   const acts = inRange(DATA.activities, from, to).sort((a, b) => (b.start || b.date).localeCompare(a.start || a.date));
-  const shown = acts.slice(0, 25);
+  const shown = acts.slice(0, actLimit);
   document.getElementById("act-note").textContent = acts.length > shown.length ? `${shown.length} האחרונים מתוך ${acts.length}` : `${acts.length} אימונים`;
+  const more = document.getElementById("act-more");
+  more.hidden = acts.length <= shown.length;
+  more.textContent = `הצגת עוד (${fmt(Math.min(20, acts.length - shown.length))})`;
+  document.getElementById("act-list").innerHTML = shown.length ? shown.map(a => {
+    const cat = categoryOf(a.type);
+    const stats = [a.distance_km ? fmt(a.distance_km, 1) + " ק״מ" : null, fmtDuration(a.duration_min), pace(a) !== "–" ? pace(a) : null, a.avg_hr ? "דופק " + fmt(a.avg_hr) : null].filter(Boolean).join(" · ");
+    return `<li><div class="row1"><span class="name"><span class="dot" style="background:var(${cat.color})"></span>${escapeHtml(a.name || TYPE_LABELS[a.type] || a.type)}</span>
+      <span class="when">${new Date(toTime(a.date)).toLocaleDateString("he-IL", { day: "numeric", month: "short" })}</span></div><div class="stats">${stats}</div></li>`;
+  }).join("") : `<li class="empty">אין אימונים בטווח הזה</li>`;
   const head = "<tr><th>תאריך</th><th>אימון</th><th>סוג</th><th>מרחק</th><th>משך</th><th>קצב / מהירות</th><th>דופק ממוצע</th><th>קלוריות</th></tr>";
   const rows = shown.map(a => {
     const cat = categoryOf(a.type);
@@ -336,7 +401,7 @@ function escapeHtml(s) { return s.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<":
 
 function renderSteps({ from, to }) {
   const days = inRange(DATA.daily, from, to);
-  const weekly = (to - from) / DAY > 120;
+  const spanDays = (to - from) / DAY, weekly = spanDays > 120 || (NARROW.matches && spanDays > 45);
   let labels, steps, goals;
   if (weekly) {
     const ws = weeks(from, to);
@@ -361,14 +426,14 @@ function renderSteps({ from, to }) {
   ] }, options: opts });
 }
 
-function timeLine(id, rows, field, label, digits, { from, to }, color = css("--s1")) {
+function timeLine(id, rows, field, label, digits, { from, to }, emptyMsg, color = css("--s1")) {
   const pts = rows.filter(r => r[field] != null).map(r => ({ x: toTime(r.date), y: r[field] }));
   const opts = baseOptions({ timeX: true });
-  opts.scales.x = { ...opts.scales.x, type: "linear", min: from, max: to - DAY, ticks: { ...opts.scales.x.ticks, callback: v => shortDate(v), maxTicksLimit: 6 } };
+  opts.scales.x = { ...opts.scales.x, type: "linear", min: from, max: to - DAY, ticks: { ...opts.scales.x.ticks, callback: v => shortDate(v), maxTicksLimit: NARROW.matches ? 4 : 6 } };
   opts.scales.y.grace = "10%";
   opts.plugins.tooltip.callbacks = { title: items => longDate(items[0].raw.x), label: item => ` ${label}: ${fmt(item.raw.y, digits)}` };
   const sparse = pts.length < 40;
-  draw(id, { type: "line", data: { datasets: [line(color, { label, data: pts, pointRadius: sparse ? 3 : 0, pointBorderColor: css("--surface"), pointBorderWidth: 1.5 })] }, options: opts });
+  draw(id, { type: "line", data: { datasets: [line(color, { label, data: pts, pointRadius: sparse ? 3 : 0, pointBorderColor: css("--surface"), pointBorderWidth: 1.5 })] }, options: opts }, emptyMsg);
 }
 
 function renderIntensity({ from, to }) {
@@ -394,12 +459,37 @@ function render() {
   renderWeekly(b);
   renderActivitiesTable(b);
   renderSteps(b);
-  timeLine("c-rhr", inRange(DATA.daily, b.from, b.to), "resting_hr", "דופק מנוחה", 0, b);
+  renderRestingHr(b);
   renderIntensity(b);
+  renderBody(b);
+}
+
+// Daily resting HR is too jagged for a phone over long ranges: plot weekly averages there.
+function renderRestingHr(b) {
+  const days = inRange(DATA.daily, b.from, b.to);
+  const weekly = NARROW.matches && (b.to - b.from) / DAY > 45;
+  document.getElementById("rhr-note").textContent = weekly ? "פעימות לדקה · ממוצע שבועי" : "פעימות לדקה";
+  const rows = weekly
+    ? weeks(b.from, b.to).map(w => ({ date: new Date(w - new Date(w).getTimezoneOffset() * 60000).toISOString().slice(0, 10),
+        resting_hr: avg(days.filter(d => weekStart(d.date) === w), d => d.resting_hr) }))
+    : days;
+  timeLine("c-rhr", rows, "resting_hr", weekly ? "ממוצע שבועי" : "דופק מנוחה", weekly ? 1 : 0, b);
+}
+
+// Body composition: hide metrics the scale never reported; say when the last reading was.
+function renderBody(b) {
   const body = inRange(DATA.body, b.from, b.to);
-  timeLine("c-weight", body, "weight_kg", "משקל", 1, b);
-  timeLine("c-fat", body, "body_fat_pct", "אחוז שומן", 1, b);
-  timeLine("c-muscle", body, "muscle_kg", "מסת שריר", 1, b);
+  const metrics = [["c-weight", "weight_kg", "משקל", "ק״ג"], ["c-fat", "body_fat_pct", "אחוז שומן", "%"], ["c-muscle", "muscle_kg", "מסת שריר", "ק״ג"]];
+  let any = false;
+  for (const [id, field, label, unit] of metrics) {
+    const all = DATA.body.filter(r => r[field] != null);
+    document.querySelector(`[data-field="${field}"]`).hidden = !all.length;
+    if (!all.length) continue;
+    any = true;
+    const last = all.at(-1);
+    timeLine(id, body, field, label, 1, b, `אין מדידות בטווח הזה<br>האחרונה: ${fmt(last[field], 1)} ${unit} ב-${longDate(toTime(last.date))}`);
+  }
+  document.getElementById("body-section").hidden = !any;
 }
 
 // ---------- unlock (data.js encrypted by scripts/encrypt-data.mjs) ----------
@@ -450,11 +540,13 @@ async function unlock() {
 async function boot() {
   if (ENCRYPTED) await unlock();
   document.getElementById("content").hidden = false;
+  document.getElementById("range").hidden = false;
   document.getElementById("updated").textContent = DATA.updated ? "עודכן: " + new Date(DATA.updated).toLocaleString("he-IL", { dateStyle: "medium", timeStyle: "short" }) : "";
   if (DEMO) document.getElementById("banner").innerHTML = '<div class="banner">מוצגים <b>נתוני הדגמה</b>. הנתונים שלכם יופיעו אחרי הסנכרון הראשון (GitHub Action או <code>python fetch_garmin.py</code>).</div>';
   document.querySelectorAll(".range button").forEach(btn => btn.addEventListener("click", () => {
     document.querySelectorAll(".range button").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
     rangeDays = +btn.dataset.days;
+    actLimit = 10;
     render();
   }));
   if (!window.Chart) {
@@ -463,6 +555,10 @@ async function boot() {
     Chart.defaults.font.family = 'system-ui, -apple-system, "Segoe UI", sans-serif';
     render();
     matchMedia("(prefers-color-scheme: dark)").addEventListener("change", render);
+    NARROW.addEventListener("change", render);
+    document.getElementById("act-more").addEventListener("click", () => { actLimit += 20; renderActivitiesTable(bounds()); });
+    const header = document.querySelector("header");
+    addEventListener("scroll", () => header.classList.toggle("scrolled", scrollY > 4), { passive: true });
   }
 }
 boot();
