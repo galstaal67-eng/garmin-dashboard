@@ -7,7 +7,8 @@
 | `fetch_garmin.py` | מושך נתונים מ-Garmin Connect אל `data/garmin.json` |
 | `.github/workflows/sync.yml` | מריץ את המשיכה כל בוקר ושומר את `data/garmin.json` בריפו (הפרטי) |
 | `docs/index.html` | הדשבורד |
-| `scripts/encrypt-data.mjs` + `netlify.toml` | בבנייה ב-Netlify: מצפין את הנתונים בסיסמה ומפרסם רק את `docs/` |
+| `scripts/encrypt-data.mjs` + `netlify.toml` | בבנייה ב-Netlify: מצפין את הנתונים (ואת מפתח ה-GitHub) בסיסמה ומפרסם רק את `docs/` |
+| `scripts/should-build.mjs` | מדלג על בנייה ב-Netlify כשהשתנו רק נתונים (כשיש מפתח GitHub) |
 
 הנתונים הגולמיים לא מתפרסמים. האתר ב-Netlify מקבל רק עותק מוצפן (AES-256), והדפדפן מפענח אותו אחרי הזנת סיסמה.
 
@@ -34,7 +35,22 @@ python fetch_garmin.py --login
 2. **Site configuration → Environment variables → Add a variable**: `DASHBOARD_PASSWORD` = הסיסמה לדשבורד.
 3. **Deploys → Trigger deploy**.
 
-בלי `DASHBOARD_PASSWORD` הבנייה נכשלת בכוונה, כדי שלא יתפרסם שום דבר לא מוצפן. כל סנכרון יומי יוצר commit, ו-Netlify מתעדכן לבד.
+בלי `DASHBOARD_PASSWORD` הבנייה נכשלת בכוונה, כדי שלא יתפרסם שום דבר לא מוצפן.
+
+## 4. נתונים חיים וכפתור "סנכרון" (מומלץ)
+
+בתוכנית החינמית של Netlify יש כ-20 פרסומים בחודש, והסנכרון היומי לבדו צורך 30. עם מפתח GitHub, הדף טוען את הנתונים ישירות מהריפו הפרטי, Netlify לא בונה מחדש על כל שינוי נתונים, ומופיע כפתור **⟳ סנכרון** שמפעיל סנכרון מגרמין ומרענן את המסך.
+
+1. GitHub → **Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token**
+   - **Repository access**: Only select repositories → `garmin-dashboard`
+   - **Permissions**: `Contents` = Read-only, `Actions` = Read and write
+   - **Expiration**: עד שנה (צריך לחדש כשפג)
+2. Netlify → **Site configuration → Environment variables**: `DASHBOARD_GITHUB_TOKEN` = הטוקן.
+3. **Deploys → Trigger deploy**.
+
+עם המפתח, לחיצה על אימון ברשימה פותחת **ניתוח אימון**: גרפים של דופק, הספק, קצב/מהירות וגובה, זמן באזורי דופק, הקפות, הספק מרבי או המקטעים המהירים, השוואה לאימונים הקודמים מאותו סוג, סחיפת דופק ושיאים. הנתונים המפורטים נשמרים ב-`data/activities/` (עד 100 אימונים חדשים בכל סנכרון, אז הסנכרון הראשון אחרי העדכון ארוך יותר).
+
+המפתח נשמר רק בתוך החבילה המוצפנת בסיסמת הדשבורד, ומי שאין לו את הסיסמה לא יכול לקרוא אותו.
 
 ## צפייה מקומית
 

@@ -24,10 +24,14 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 
 from garminconnect import Garmin, GarminConnectAuthenticationError
+from garminconnect.activity_details import parse_activity_detail_metrics
 
 ROOT = Path(__file__).resolve().parent
 DATA_JSON = ROOT / "data" / "garmin.json"
 DATA_JS = ROOT / "docs" / "data.js"
+DETAILS_DIR = ROOT / "data" / "activities"
+# Points kept per time series in data/activities/<id>.json (enough for a chart).
+SERIES_POINTS = 500
 TOKEN_DIR = Path(os.path.expanduser(os.getenv("GARMIN_TOKEN_DIR", "~/.garminconnect")))
 # Re-fetch a few recent days every sync: today's summary is partial until the day ends.
 OVERLAP_DAYS = 3
@@ -114,8 +118,131 @@ def fetch_activities(garmin: Garmin, start: date, end: date) -> list[dict]:
             "elev_gain_m": num(a.get("elevationGain"), digits=0),
             "avg_speed_kmh": num(speed, 3.6, 2),
             "training_load": num(a.get("activityTrainingLoad")),
+            "avg_power": num(a.get("avgPower"), digits=0),
+            "max_power": num(a.get("maxPower"), digits=0),
+            "norm_power": num(a.get("normPower"), digits=0),
+            "cadence": num(a.get("averageBikingCadenceInRevPerMinute") or a.get("averageRunningCadenceInStepsPerMinute"), digits=0),
+            "te_aerobic": num(a.get("aerobicTrainingEffect")),
+            "te_anaerobic": num(a.get("anaerobicTrainingEffect")),
+            "te_label": a.get("trainingEffectLabel"),
         })
     return rows
+
+
+def best_average(t: list[float], v: list[float | None], window: int) -> float | None:
+    """Best mean of v over any `window` seconds, holding each sample until the next one."""
+    if not t or t[-1] - t[0] < window:
+        return None
+    grid, j, last = [], 0, None
+    for sec in range(int(t[0]), int(t[-1]) + 1):
+        while j < len(t) and t[j] <= sec:
+            last = v[j] if v[j] is not None else last
+            j += 1
+        grid.append(last or 0)
+    csum = [0.0]
+    for x in grid:
+        csum.append(csum[-1] + x)
+    return max(csum[i + window] - csum[i] for i in range(len(grid) - window + 1)) / window
+
+
+def best_time_for(t: list[float], dist_km: list[float | None], km: float) -> float | None:
+    """Fastest time (seconds) to cover `km` anywhere in the activity."""
+    pts = [(ti, d) for ti, d in zip(t, dist_km) if d is not None]
+    best, j = None, 0
+    for i in range(len(pts)):
+        while j < len(pts) and pts[j][1] - pts[i][1] < km:
+            j += 1
+        if j == len(pts):
+            break
+        best = min(best or 1e9, pts[j][0] - pts[i][0])
+    return best
+
+
+def downsample(t: list[float], cols: dict[str, list], points: int) -> dict[str, list]:
+    """Average each column into at most `points` equal-count buckets."""
+    size = max(1, -(-len(t) // points))
+    out = {"t": []} | {k: [] for k in cols}
+    for i in range(0, len(t), size):
+        out["t"].append(round(t[i]))
+        for k, col in cols.items():
+            vals = [x for x in col[i:i + size] if x is not None]
+            out[k].append(round(sum(vals) / len(vals), 2) if vals else None)
+    return out
+
+
+def fetch_details(garmin: Garmin, activity: dict) -> dict:
+    """Time series, laps, HR zones and peak efforts for one activity."""
+    samples = parse_activity_detail_metrics(garmin.get_activity_details(activity["id"], maxchart=4000, maxpoly=0) or {})
+    samples = [s for s in samples if s.get("directTimestamp") is not None]
+    samples.sort(key=lambda s: s["directTimestamp"])
+    t0 = samples[0]["directTimestamp"] if samples else 0
+    t = [(s["directTimestamp"] - t0) / 1000 for s in samples]
+
+    def col(*keys, scale=1.0):
+        out = []
+        for s in samples:
+            v = next((s[k] for k in keys if s.get(k) is not None), None)
+            out.append(None if v is None else v * scale)
+        return out
+
+    cols = {
+        "hr": col("directHeartRate"),
+        "speed": col("directSpeed", "directEnhancedSpeed", scale=3.6),
+        "power": col("directPower"),
+        "cadence": col("directBikeCadence", "directDoubleCadence", "directRunCadence"),
+        "elev": col("directElevation", "directEnhancedElevation"),
+        "dist": col("sumDistance", scale=0.001),
+    }
+    cols = {k: v for k, v in cols.items() if any(x not in (None, 0) for x in v)}
+
+    peaks = {}
+    for key in ("power", "hr"):
+        if key in cols:
+            for window in (60, 300, 1200, 3600):
+                best = best_average(t, cols[key], window)
+                if best:
+                    peaks[f"{key}_{window // 60}m"] = round(best)
+    if "dist" in cols and not activity["type"].endswith(("cycling", "biking", "ride")):
+        for km in (1, 5, 10):
+            best = best_time_for(t, cols["dist"], km)
+            if best:
+                peaks[f"time_{km}km"] = round(best)
+
+    laps = []
+    for lap in (garmin.get_activity_splits(activity["id"]) or {}).get("lapDTOs") or []:
+        laps.append({
+            "distance_km": num(lap.get("distance"), 0.001, 2),
+            "duration_min": num(lap.get("duration"), 1 / 60, 2),
+            "avg_speed_kmh": num(lap.get("averageSpeed"), 3.6, 2),
+            "avg_hr": num(lap.get("averageHR"), digits=0),
+            "max_hr": num(lap.get("maxHR"), digits=0),
+            "avg_power": num(lap.get("averagePower"), digits=0),
+            "cadence": num(lap.get("averageBikeCadence") or lap.get("averageRunCadence"), digits=0),
+            "elev_gain_m": num(lap.get("elevationGain"), digits=0),
+        })
+
+    zones = [
+        {"zone": z.get("zoneNumber"), "secs": round(z.get("secsInZone") or 0), "low": z.get("zoneLowBoundary")}
+        for z in garmin.get_activity_hr_in_timezones(activity["id"]) or []
+    ]
+    return {"id": activity["id"], "v": 1, "series": downsample(t, cols, SERIES_POINTS) if samples else None,
+            "peaks": peaks, "laps": laps, "zones": zones}
+
+
+def sync_details(garmin: Garmin, activities: list[dict], limit: int) -> int:
+    """Write data/activities/<id>.json for the newest activities that don't have one yet."""
+    DETAILS_DIR.mkdir(parents=True, exist_ok=True)
+    missing = [a for a in sorted(activities, key=lambda a: a.get("start") or a["date"], reverse=True)
+               if not (DETAILS_DIR / f"{a['id']}.json").exists()]
+    for a in missing[:limit]:
+        try:
+            detail = fetch_details(garmin, a)
+        except Exception as e:  # manual entries and some indoor types have no detail data
+            print(f"  no details for activity {a['id']} ({type(e).__name__})")
+            detail = {"id": a["id"], "v": 1, "unavailable": True}
+        (DETAILS_DIR / f"{a['id']}.json").write_text(json.dumps(detail, separators=(",", ":")) + "\n", encoding="utf-8")
+        time.sleep(0.5)
+    return min(len(missing), limit)
 
 
 def fetch_daily(garmin: Garmin, start: date, end: date) -> list[dict]:
@@ -182,6 +309,8 @@ def main() -> int:
     parser.add_argument("--login", action="store_true", help="log in interactively and print the token JSON")
     parser.add_argument("--days", type=int, default=365, help="history to pull on the first run (default 365)")
     parser.add_argument("--full", action="store_true", help="ignore existing data and re-pull --days")
+    parser.add_argument("--details-limit", type=int, default=100,
+                        help="max activities to fetch per-activity analysis for in one run (default 100)")
     args = parser.parse_args()
 
     interactive = sys.stdin.isatty()
@@ -202,7 +331,9 @@ def main() -> int:
     )
     print(f"Syncing {start} .. {end}")
 
-    activities = fetch_activities(garmin, start, end)
+    # The activity list is cheap (20 per request), so re-read all of it: older rows pick up new fields.
+    first_activity = min((r["date"] for r in data["activities"]), default=iso(start))
+    activities = fetch_activities(garmin, min(start, datetime.strptime(first_activity, "%Y-%m-%d").date()), end)
     daily = fetch_daily(garmin, start, end)
     body = fetch_body(garmin, start, end)
     print(f"  {len(activities)} activities, {len(daily)} days, {len(body)} weigh-ins")
@@ -211,6 +342,8 @@ def main() -> int:
     data["daily"] = merge(data["daily"], daily, lambda r: r["date"])
     data["body"] = merge(data["body"], body, lambda r: (r["date"], r.get("ts")))
     data["updated"] = datetime.now().astimezone().isoformat(timespec="minutes")
+    detailed = sync_details(garmin, data["activities"], args.details_limit)
+    print(f"  analysis for {detailed} activities")
 
     DATA_JSON.parent.mkdir(exist_ok=True)
     DATA_JS.parent.mkdir(exist_ok=True)
