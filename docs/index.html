@@ -25,6 +25,8 @@
   --bad: #d03b3b;
   --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4;
   --seq-lo: #86b6ef; --seq-hi: #1c5cab;
+  --hr: #e34948; --power: #6250d6;
+  --z1: #86b6ef; --z2: #5598e7; --z3: #2a78d6; --z4: #1c5cab; --z5: #104281;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -33,6 +35,8 @@
     --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10); --good: #0ca30c; --bad: #e66767;
     --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181;
     --seq-lo: #184f95; --seq-hi: #6da7ec;
+    --hr: #e66767; --power: #9085e9;
+    --z1: #184f95; --z2: #256abf; --z3: #3987e5; --z4: #6da7ec; --z5: #9ec5f4;
   }
 }
 :root[data-theme="dark"] {
@@ -41,6 +45,8 @@
   --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10); --good: #0ca30c; --bad: #e66767;
   --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181;
   --seq-lo: #184f95; --seq-hi: #6da7ec;
+  --hr: #e66767; --power: #9085e9;
+  --z1: #184f95; --z2: #256abf; --z3: #3987e5; --z4: #6da7ec; --z5: #9ec5f4;
 }
 * { box-sizing: border-box; }
 body {
@@ -117,6 +123,46 @@ th, td { text-align: start; padding: 7px 8px; border-bottom: 1px solid var(--gri
 th { color: var(--ink-2); font-weight: 600; }
 td.num { font-variant-numeric: tabular-nums; }
 .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-inline-end: 6px; vertical-align: 0; }
+tr[data-id], .act-list li[data-id] { cursor: pointer; }
+tr[data-id]:hover td { background: var(--page); }
+.act-list li[data-id]:focus-visible, tr[data-id]:focus-visible { outline: 2px solid var(--s1); outline-offset: -2px; }
+.act-list .chev { color: var(--muted); margin-inline-start: 4px; }
+body:has(dialog[open]) { overflow: hidden; }
+dialog.sheet { padding: 0; border: 0; width: min(880px, calc(100% - 32px)); max-width: none; max-height: min(92dvh, 100%); border-radius: 16px; background: var(--page); color: var(--ink); overflow: auto; overscroll-behavior: contain; }
+dialog.sheet::backdrop { background: rgba(0,0,0,.45); }
+.sheet-head { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--page); border-bottom: 1px solid var(--ring); }
+.sheet-head h2 { margin: 0; font-size: 18px; line-height: 1.3; }
+.sheet-head .meta { color: var(--muted); font-size: 12px; }
+.sheet-close { margin-inline-start: auto; flex: none; width: 40px; height: 40px; border-radius: 999px; border: 1px solid var(--ring); background: var(--surface); color: var(--ink); font-size: 16px; cursor: pointer; }
+.sheet-body { padding: 16px 16px calc(24px + env(safe-area-inset-bottom)); }
+.sheet-body h3.sec { font-size: 15px; margin: 20px 0 8px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; }
+.stat { background: var(--surface); border: 1px solid var(--ring); border-radius: 10px; padding: 9px 12px; }
+.stat .label { font-size: 12px; color: var(--ink-2); }
+.stat .value { font-size: 18px; font-weight: 600; }
+.stat .value small { font-size: 12px; font-weight: 400; color: var(--ink-2); }
+.insights { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.insights li { background: var(--surface); border: 1px solid var(--ring); border-radius: 10px; padding: 10px 12px; }
+.insights li b { font-weight: 600; }
+.insights .hint { color: var(--muted); font-size: 12px; }
+.cmp td:nth-child(n+2), .cmp th:nth-child(n+2) { text-align: end; }
+.zrow { display: grid; grid-template-columns: 110px 1fr 70px; gap: 8px; align-items: center; margin: 6px 0; font-size: 13px; }
+.zrow .zlabel { color: var(--ink-2); white-space: nowrap; }
+.zrow .track { height: 14px; }
+.zrow .zbar { height: 100%; border-radius: 4px; min-width: 2px; }
+.zrow .ztime { font-variant-numeric: tabular-nums; text-align: end; color: var(--ink-2); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { background: var(--surface); border: 1px solid var(--ring); border-radius: 999px; padding: 5px 12px; font-size: 13px; }
+.chip b { font-variant-numeric: tabular-nums; }
+.sheet-body .card { margin-top: 8px; }
+.sheet-body .chart { height: 200px; }
+@media (max-width: 640px) {
+  dialog.sheet { width: 100%; height: 100dvh; max-height: 100dvh; margin: 0; border-radius: 0; }
+  .sheet-head { padding-top: calc(12px + env(safe-area-inset-top)); }
+  .sheet-body { padding: 12px 12px calc(24px + env(safe-area-inset-bottom)); }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .zrow { grid-template-columns: 92px 1fr 56px; }
+}
 @media (max-width: 640px) {
   header { gap: 10px; padding-bottom: 10px; }
   header > div:first-child { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; width: 100%; }
@@ -172,7 +218,7 @@ td.num { font-variant-numeric: tabular-nums; }
   <h2>אימונים</h2>
   <div class="grid">
     <div class="card wide"><h3>שעות אימון בשבוע לפי סוג</h3><div class="note">שבוע מתחיל ביום ראשון</div><div class="chart"><canvas id="c-weekly"></canvas></div></div>
-    <div class="card wide"><h3>אימונים אחרונים</h3><div class="note" id="act-note"></div><div class="table-wrap"><table id="act-table"></table></div><ul class="act-list" id="act-list"></ul><button class="more" id="act-more" hidden>הצגת עוד</button></div>
+    <div class="card wide"><h3>אימונים אחרונים</h3><div class="note"><span id="act-note"></span> · לחצו על אימון לניתוח</div><div class="table-wrap"><table id="act-table"></table></div><ul class="act-list" id="act-list"></ul><button class="more" id="act-more" hidden>הצגת עוד</button></div>
   </div>
 
   <h2>פעילות יומית</h2>
@@ -192,6 +238,14 @@ td.num { font-variant-numeric: tabular-nums; }
   </section>
   </div>
 </main>
+
+<dialog class="sheet" id="act-dialog" aria-labelledby="act-title">
+  <div class="sheet-head">
+    <div><h2 id="act-title"></h2><div class="meta" id="act-meta"></div></div>
+    <button class="sheet-close" id="act-close" type="button" aria-label="סגירה">✕</button>
+  </div>
+  <div class="sheet-body" id="act-body"></div>
+</dialog>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="data.js"></script>
@@ -238,7 +292,9 @@ function makeDemoData() {
       activities.push({ id: id++, date, start: date + "T07:" + String(Math.floor(rnd() * 59)).padStart(2, "0") + ":00", name: TYPE_LABELS[type],
         type, duration_min: +mins.toFixed(1), distance_km: fast ? +(fast * (1 + (400 - i) / 2000) * mins / 60).toFixed(2) : null,
         avg_hr: Math.round(125 + rnd() * 30), max_hr: Math.round(160 + rnd() * 20), calories: Math.round(mins * (7 + rnd() * 4)),
-        elev_gain_m: Math.round(rnd() * 200), avg_speed_kmh: fast ? +(fast * (1 + (400 - i) / 2000)).toFixed(2) : null });
+        elev_gain_m: Math.round(rnd() * 200), avg_speed_kmh: fast ? +(fast * (1 + (400 - i) / 2000)).toFixed(2) : null,
+        avg_power: type === "road_biking" ? Math.round(170 + rnd() * 40 + (400 - i) / 20) : null,
+        te_aerobic: +(2 + rnd() * 2).toFixed(1), te_anaerobic: +(rnd() * 2).toFixed(1), te_label: ["BASE", "TEMPO", "LACTATE_THRESHOLD"][Math.floor(rnd() * 3)] });
     }
     const steps = Math.round(6000 + rnd() * 7000 + (dow === 6 ? 3000 : 0));
     daily.push({ date, steps, step_goal: 9000, resting_hr: Math.round(56 - (400 - i) / 120 + rnd() * 4),
@@ -392,13 +448,13 @@ function renderActivitiesTable({ from, to }) {
   document.getElementById("act-list").innerHTML = shown.length ? shown.map(a => {
     const cat = categoryOf(a.type);
     const stats = [a.distance_km ? fmt(a.distance_km, 1) + " ק״מ" : null, fmtDuration(a.duration_min), pace(a) !== "–" ? pace(a) : null, a.avg_hr ? "דופק " + fmt(a.avg_hr) : null].filter(Boolean).join(" · ");
-    return `<li><div class="row1"><span class="name"><span class="dot" style="background:var(${cat.color})"></span>${escapeHtml(a.name || TYPE_LABELS[a.type] || a.type)}</span>
-      <span class="when">${new Date(toTime(a.date)).toLocaleDateString("he-IL", { day: "numeric", month: "short" })}</span></div><div class="stats">${stats}</div></li>`;
+    return `<li data-id="${a.id}" tabindex="0" role="button"><div class="row1"><span class="name"><span class="dot" style="background:var(${cat.color})"></span>${escapeHtml(a.name || TYPE_LABELS[a.type] || a.type)}</span>
+      <span class="when">${new Date(toTime(a.date)).toLocaleDateString("he-IL", { day: "numeric", month: "short" })}<span class="chev" aria-hidden="true">‹</span></span></div><div class="stats">${stats}</div></li>`;
   }).join("") : `<li class="empty">אין אימונים בטווח הזה</li>`;
   const head = "<tr><th>תאריך</th><th>אימון</th><th>סוג</th><th>מרחק</th><th>משך</th><th>קצב / מהירות</th><th>דופק ממוצע</th><th>קלוריות</th></tr>";
   const rows = shown.map(a => {
     const cat = categoryOf(a.type);
-    return `<tr><td class="num">${longDate(toTime(a.date))}</td><td>${escapeHtml(a.name || "")}</td>
+    return `<tr data-id="${a.id}" tabindex="0"><td class="num">${longDate(toTime(a.date))}</td><td>${escapeHtml(a.name || "")}</td>
       <td><span class="dot" style="background:var(${cat.color})"></span>${TYPE_LABELS[a.type] || a.type}</td>
       <td class="num">${a.distance_km ? fmt(a.distance_km, 2) + " ק״מ" : "–"}</td><td class="num">${fmtDuration(a.duration_min)}</td>
       <td class="num">${pace(a)}</td><td class="num">${fmt(a.avg_hr)}</td><td class="num">${fmt(a.calories)}</td></tr>`;
@@ -609,6 +665,242 @@ async function syncNow() {
   }
 }
 
+// ---------- per-activity analysis (data/activities/<id>.json, written by fetch_garmin.py) ----------
+const TE_LABELS = {
+  RECOVERY: "התאוששות", BASE: "בסיס", AEROBIC_BASE: "בסיס אירובי", TEMPO: "טמפו", LACTATE_THRESHOLD: "סף לקטט",
+  VO2MAX: "VO2 מקס", ANAEROBIC_CAPACITY: "יכולת אנאירובית", SPEED: "מהירות", NO_BENEFIT: "ללא השפעה משמעותית",
+};
+// "the previous <these>" per category, for insight sentences
+const CATEGORY_PLURAL = { run: "הריצות", bike: "הרכיבות", swim: "אימוני השחייה", walk: "ההליכות", other: "האימונים מאותו סוג" };
+const detailCache = new Map();
+let openId = null;
+
+const fmtClock = sec => {
+  if (sec == null) return "–";
+  const h = Math.floor(sec / 3600), m = Math.floor(sec % 3600 / 60), s = Math.round(sec % 60);
+  return h ? `${h}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}` : `${m}:${String(s).padStart(2, "0")}`;
+};
+const isPaceType = type => /running|walking|hiking/.test(type || "");
+const median = v => { const s = v.filter(x => x != null).sort((a, b) => a - b); return s.length ? (s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : null; };
+const stat = (label, value, unit) => `<div class="stat"><div class="label">${label}</div><div class="value">${value}${unit ? ` <small>${unit}</small>` : ""}</div></div>`;
+
+async function loadDetail(a) {
+  if (detailCache.has(a.id)) return detailCache.get(a.id);
+  let detail = null;
+  if (DEMO) detail = makeDemoDetail(a);
+  else if (GH) {
+    try { detail = await (await gh(`/contents/data/activities/${a.id}.json?ref=main`, { headers: { Accept: "application/vnd.github.raw+json" } })).json(); }
+    catch (e) { if (!/404/.test(e.message)) throw e; }
+  }
+  if (detail) detailCache.set(a.id, detail);  // a missing file may appear after the next sync
+  return detail;
+}
+
+function makeDemoDetail(a) {
+  const dur = (a.duration_min || 45) * 60, n = 400, bike = /biking|cycling|ride/.test(a.type), t = [], hr = [], speed = [], power = [], elev = [];
+  for (let i = 0; i < n; i++) {
+    const sec = i * dur / n; t.push(Math.round(sec));
+    hr.push(Math.round((a.avg_hr || 140) - 12 + 24 * sec / dur + 4 * Math.sin(i / 9)));
+    speed.push(+((a.avg_speed_kmh || 10) * (1 + .06 * Math.sin(i / 17))).toFixed(2));
+    power.push(bike ? Math.round((a.avg_power || 180) + (i > n * .4 && i < n * .5 ? 90 : 0) + 15 * Math.sin(i / 5)) : null);
+    elev.push(Math.round(40 + 25 * Math.sin(i / 60)));
+  }
+  const series = { t, hr, speed, elev, ...(bike ? { power } : {}) };
+  const zones = [[1, .1, 100], [2, .25, 118], [3, .35, 137], [4, .22, 155], [5, .08, 174]].map(([zone, f, low]) => ({ zone, secs: Math.round(dur * f), low }));
+  const laps = a.distance_km ? Array.from({ length: Math.min(8, Math.floor(a.distance_km)) }, (_, i) => ({ distance_km: 1, duration_min: 60 / (a.avg_speed_kmh || 10) * (1 + .03 * Math.sin(i)), avg_speed_kmh: (a.avg_speed_kmh || 10) * (1 - .03 * Math.sin(i)), avg_hr: (a.avg_hr || 140) - 6 + i * 2 })) : [];
+  const peaks = bike ? { power_1m: Math.round((a.avg_power || 180) * 1.6), power_5m: Math.round((a.avg_power || 180) * 1.45), power_20m: Math.round((a.avg_power || 180) * 1.1) } : isPaceType(a.type) && a.distance_km >= 5 ? { time_1km: Math.round(3600 / (a.avg_speed_kmh || 10) * .93), time_5km: Math.round(5 * 3600 / (a.avg_speed_kmh || 10) * .98) } : {};
+  return { id: a.id, v: 1, series, zones, laps, peaks };
+}
+
+function activityStats(a) {
+  const out = [stat("משך", fmtDuration(a.duration_min))];
+  if (a.distance_km) out.push(stat("מרחק", fmt(a.distance_km, 2), "ק״מ"));
+  if (a.distance_km && a.duration_min) out.push(stat(isPaceType(a.type) ? "קצב ממוצע" : "מהירות ממוצעת", pace(a)));
+  if (a.avg_hr) out.push(stat("דופק ממוצע / מקס׳", `${fmt(a.avg_hr)}${a.max_hr ? " / " + fmt(a.max_hr) : ""}`, "bpm"));
+  if (a.avg_power) out.push(stat(a.norm_power ? "הספק ממוצע / NP" : "הספק ממוצע", `${fmt(a.avg_power)}${a.norm_power ? " / " + fmt(a.norm_power) : ""}`, "W"));
+  if (a.cadence) out.push(stat("קדנס ממוצע", fmt(a.cadence), /biking|cycling|ride/.test(a.type) ? "סל״ד" : "צעדים/ד׳"));
+  if (a.elev_gain_m) out.push(stat("טיפוס מצטבר", fmt(a.elev_gain_m), "מ׳"));
+  if (a.calories) out.push(stat("קלוריות", fmt(a.calories)));
+  if (a.te_aerobic != null) out.push(stat("אפקט אירובי / אנאירובי", `${fmt(a.te_aerobic, 1)} / ${fmt(a.te_anaerobic, 1)}`));
+  if (a.training_load) out.push(stat("עומס אימון", fmt(a.training_load)));
+  return `<div class="stats">${out.join("")}</div>`;
+}
+
+// Compare with the previous activities of the same kind, from the summaries already loaded.
+function comparison(a) {
+  const cat = categoryOf(a.type), key = a.start || a.date;
+  const prior = DATA.activities.filter(x => x.id !== a.id && categoryOf(x.type) === cat && (x.start || x.date) < key)
+    .sort((x, y) => (y.start || y.date).localeCompare(x.start || x.date)).slice(0, 10);
+  if (prior.length < 3) return { html: "", notes: [] };
+  const metrics = [
+    ["duration_min", "משך", v => fmtDuration(v), true],
+    ["distance_km", "מרחק", v => fmt(v, 1) + " ק״מ", true],
+    ["avg_speed_kmh", isPaceType(a.type) ? "קצב" : "מהירות", v => pace({ type: a.type, distance_km: v, duration_min: 60 }), true],
+    ["avg_power", "הספק ממוצע", v => fmt(v) + " W", true],
+    ["avg_hr", "דופק ממוצע", v => fmt(v), null],
+  ];
+  const rows = [], notes = [], diffs = [];
+  for (const [field, label, show, upIsMore] of metrics) {
+    const med = median(prior.map(x => x[field])), v = a[field];
+    if (v == null || !med) continue;
+    const diff = (v - med) / med * 100;
+    const arrow = Math.abs(diff) < 1 ? "≈" : diff > 0 ? "▲" : "▼";
+    rows.push(`<tr><td>${label}</td><td class="num">${show(v)}</td><td class="num">${show(med)}</td><td class="num">${arrow} ${fmt(Math.abs(diff))}%</td></tr>`);
+    if (Math.abs(diff) >= 5 && upIsMore !== null) {
+      const word = field === "avg_speed_kmh" ? (diff > 0 ? "מהיר" : "איטי") : field === "avg_power" ? (diff > 0 ? "חזק" : "חלש") : (diff > 0 ? "ארוך" : "קצר");
+      diffs.push(`<b>${word} ב-${fmt(Math.abs(diff))}%</b> ב${label}`);
+    }
+  }
+  const these = CATEGORY_PLURAL[cat.key];
+  if (diffs.length) notes.push(`לעומת החציון של ${prior.length} ${these} הקודמות: ${diffs.join(", ")}.`.replace("הקודמות", these.startsWith("האימונים") || these.startsWith("אימוני") ? "הקודמים" : "הקודמות"));
+  // Same effort at a lower heart rate is the clearest sign of improving fitness.
+  const out = a.avg_power ? "avg_power" : a.avg_speed_kmh ? "avg_speed_kmh" : null;
+  if (out && a.avg_hr) {
+    const eff = a[out] / a.avg_hr, medEff = median(prior.filter(x => x[out] && x.avg_hr).map(x => x[out] / x.avg_hr));
+    if (medEff) {
+      const d = (eff - medEff) / medEff * 100;
+      if (Math.abs(d) >= 3) notes.push(`<b>יעילות ${d > 0 ? "גבוהה" : "נמוכה"} ב-${fmt(Math.abs(d))}%</b>: ${out === "avg_power" ? "וואטים" : "מהירות"} לכל פעימת לב לעומת האימונים הקודמים${d > 0 ? " – סימן טוב לכושר." : " – אולי עייפות, חום או מאמץ קשה יותר."}`);
+    }
+  }
+  const html = rows.length ? `<h3 class="sec">לעומת ${prior.length} האימונים הקודמים מאותו סוג</h3>
+    <div class="card"><div class="table-wrap" style="display:block"><table class="cmp"><tr><th>מדד</th><th>האימון הזה</th><th>החציון שלך</th><th>הפרש</th></tr>${rows.join("")}</table></div></div>` : "";
+  return { html, notes };
+}
+
+// Records within the last 90 days among the same kind of activity.
+function recordNotes(a) {
+  const cat = categoryOf(a.type), since = toTime(a.date) - 90 * DAY;
+  const pool = DATA.activities.filter(x => categoryOf(x.type) === cat && toTime(x.date) >= since && toTime(x.date) <= toTime(a.date));
+  if (pool.length < 5) return [];
+  const notes = [];
+  for (const [field, label] of [["distance_km", "הארוך ביותר במרחק"], ["duration_min", "הארוך ביותר בזמן"], ["avg_power", "עם ההספק הממוצע הגבוה ביותר"], ["avg_speed_kmh", "המהיר ביותר"]]) {
+    if (a[field] == null || (field === "avg_speed_kmh" && (a.duration_min || 0) < 15)) continue;
+    if (pool.every(x => x.id === a.id || (x[field] ?? -1) < a[field])) notes.push(`🏆 האימון ${label} מבין ${pool.length} ${CATEGORY_PLURAL[cat.key]} ב-90 הימים האחרונים.`);
+  }
+  return notes;
+}
+
+// Aerobic decoupling: how much output per heartbeat dropped from the first half to the second.
+function decoupling(a, s) {
+  const out = s?.power ? "power" : s?.speed ? "speed" : null;
+  if (!out || !s.hr || (a.duration_min || 0) < 20) return null;
+  const pts = s.t.map((t, i) => [t, s.hr[i], s[out][i]]).filter(([, h, o]) => h > 0 && o > 0);
+  if (pts.length < 20) return null;
+  const mid = pts[0][0] + (pts.at(-1)[0] - pts[0][0]) / 2;
+  const ratio = arr => avg(arr, p => p[2]) / avg(arr, p => p[1]);
+  const r1 = ratio(pts.filter(p => p[0] < mid)), r2 = ratio(pts.filter(p => p[0] >= mid));
+  const d = (r1 - r2) / r1 * 100;
+  const verdict = d < 5 ? "יציב – הדופק לא טיפס ביחס למאמץ, סימן לבסיס אירובי טוב" : d < 10 ? "סחיפה מתונה – הדופק עלה ביחס למאמץ בחצי השני" : "סחיפה גבוהה – הדופק עלה הרבה ביחס למאמץ (עייפות, חום, התייבשות או עצימות גבוהה)";
+  return `<b>סחיפת דופק ${fmt(Math.max(d, 0), 1)}%</b>: ${verdict}.<div class="hint">השוואת ${out === "power" ? "וואטים" : "מהירות"} לכל פעימה בין חצי ראשון לשני. רלוונטי בעיקר לאימונים בקצב קבוע.</div>`;
+}
+
+function zonesHtml(zones) {
+  const total = sum(zones, z => z.secs);
+  if (!total) return "";
+  const max = Math.max(...zones.map(z => z.secs));
+  const rows = zones.map(z => `<div class="zrow"><span class="zlabel">אזור ${z.zone}${z.low ? ` · ${fmt(z.low)}+` : ""}</span>
+    <div class="track"><div class="zbar" style="width:${z.secs / max * 100}%;background:var(--z${Math.min(5, Math.max(1, z.zone))})"></div></div>
+    <span class="ztime">${fmtClock(z.secs)}</span></div>`).join("");
+  return `<h3 class="sec">זמן באזורי דופק</h3><div class="card">${rows}</div>`;
+}
+
+function zoneNote(zones) {
+  const total = sum(zones || [], z => z.secs);
+  if (!total) return null;
+  const top = zones.reduce((m, z) => z.secs > m.secs ? z : m);
+  const hard = sum(zones.filter(z => z.zone >= 4), z => z.secs);
+  return `רוב הזמן <b>באזור ${top.zone}</b> (${fmt(top.secs / total * 100)}%)${hard ? `, ו-<b>${fmtClock(hard)}</b> באזורים 4–5` : ""}.`;
+}
+
+function peaksHtml(p) {
+  const chips = [];
+  for (const m of [1, 5, 20, 60]) if (p[`power_${m}m`]) chips.push(`<span class="chip">${m} ד׳: <b>${fmt(p[`power_${m}m`])} W</b></span>`);
+  const power = chips.length ? `<h3 class="sec">הספק מרבי</h3><div class="chips">${chips.join("")}</div>` : "";
+  const runs = [1, 5, 10].filter(km => p[`time_${km}km`]).map(km => `<span class="chip">${km} ק״מ: <b>${fmtClock(p[`time_${km}km`])}</b></span>`);
+  const fastest = runs.length ? `<h3 class="sec">המקטעים המהירים ביותר</h3><div class="chips">${runs.join("")}</div>` : "";
+  return power + fastest;
+}
+
+function lapsHtml(a, laps) {
+  if (!laps || laps.length < 2) return "";
+  const power = laps.some(l => l.avg_power);
+  const rows = laps.map((l, i) => `<tr><td class="num">${i + 1}</td><td class="num">${l.distance_km ? fmt(l.distance_km, 2) : "–"}</td><td class="num">${fmtClock((l.duration_min || 0) * 60)}</td>
+    <td class="num">${l.distance_km && l.duration_min ? pace({ type: a.type, distance_km: l.distance_km, duration_min: l.duration_min }) : "–"}</td><td class="num">${fmt(l.avg_hr)}</td>${power ? `<td class="num">${fmt(l.avg_power)}</td>` : ""}</tr>`).join("");
+  return `<h3 class="sec">הקפות</h3><div class="card"><div class="table-wrap" style="display:block"><table><tr><th>#</th><th>ק״מ</th><th>זמן</th><th>${isPaceType(a.type) ? "קצב" : "מהירות"}</th><th>דופק</th>${power ? "<th>הספק</th>" : ""}</tr>${rows}</table></div></div>`;
+}
+
+function seriesChart(id, s, values, label, color, { digits = 0, reverse = false, format } = {}) {
+  const pts = s.t.map((t, i) => ({ x: t, y: values[i] })).filter(p => p.y != null);
+  const opts = baseOptions({ timeX: true });
+  opts.scales.x = { ...opts.scales.x, type: "linear", min: 0, max: s.t.at(-1), ticks: { ...opts.scales.x.ticks, callback: v => fmtClock(v), maxTicksLimit: NARROW.matches ? 5 : 8 } };
+  opts.scales.y.grace = "8%";
+  opts.scales.y.reverse = reverse;
+  if (format) opts.scales.y.ticks.callback = format;
+  opts.plugins.tooltip.callbacks = { title: items => fmtClock(items[0].raw.x), label: item => ` ${label}: ${format ? format(item.raw.y) : fmt(item.raw.y, digits)}` };
+  draw(id, { type: "line", data: { datasets: [line(color, { label, data: pts, tension: .3 })] }, options: opts });
+}
+
+function renderSeries(a, s) {
+  const blocks = [];
+  if (s.hr) blocks.push(["d-hr", "דופק", "bpm"]);
+  if (s.power) blocks.push(["d-power", "הספק", "W"]);
+  if (s.speed) blocks.push(["d-speed", isPaceType(a.type) ? "קצב" : "מהירות", isPaceType(a.type) ? "דק׳ לק״מ" : "קמ״ש"]);
+  const elevRange = s.elev ? Math.max(...s.elev.filter(x => x != null)) - Math.min(...s.elev.filter(x => x != null)) : 0;
+  if (elevRange > 10) blocks.push(["d-elev", "גובה", "מ׳"]);
+  return blocks;
+}
+
+async function openActivity(id) {
+  const a = DATA.activities.find(x => String(x.id) === String(id));
+  if (!a) return;
+  openId = a.id;
+  const dialog = document.getElementById("act-dialog"), body = document.getElementById("act-body"), cat = categoryOf(a.type);
+  document.getElementById("act-title").textContent = a.name || TYPE_LABELS[a.type] || a.type;
+  document.getElementById("act-meta").innerHTML = `<span class="dot" style="background:var(${cat.color})"></span>${TYPE_LABELS[a.type] || a.type} · ${new Date((a.start || a.date).replace(" ", "T")).toLocaleString("he-IL", { weekday: "long", day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" })}`;
+  const cmp = comparison(a);
+  body.innerHTML = activityStats(a) + `<h3 class="sec">תובנות</h3><ul class="insights" id="act-insights"></ul><div id="act-detail"><div class="empty">טוען ניתוח…</div></div>` + cmp.html;
+  if (!dialog.open) dialog.showModal();
+  dialog.scrollTop = 0;
+  if (history.state?.act == null) history.pushState({ act: a.id }, "");
+
+  const insights = [...recordNotes(a), ...cmp.notes];
+  const te = a.te_label && TE_LABELS[a.te_label];
+  if (te) insights.unshift(`אפקט האימון לפי גרמין: <b>${te}</b>${a.te_aerobic != null ? ` (אירובי ${fmt(a.te_aerobic, 1)}, אנאירובי ${fmt(a.te_anaerobic, 1)})` : ""}.`);
+  const list = () => document.getElementById("act-insights").innerHTML = insights.length ? insights.map(x => `<li>${x}</li>`).join("") : `<li class="hint">אין עדיין מספיק אימונים קודמים מאותו סוג להשוואה.</li>`;
+  list();
+
+  let detail;
+  try { detail = await loadDetail(a); } catch (e) { detail = { error: e.message }; }
+  if (openId !== a.id) return;  // another activity was opened meanwhile
+  const box = document.getElementById("act-detail");
+  if (!detail || detail.error || detail.unavailable || !detail.series) {
+    box.innerHTML = `<div class="banner" style="margin-top:12px">${
+      detail?.error ? "לא הצלחתי לטעון את הניתוח: " + escapeHtml(detail.error)
+      : detail?.unavailable ? "לגרמין אין נתונים מפורטים לאימון הזה (למשל אימון שהוזן ידנית)."
+      : !GH && !DEMO ? "הניתוח המפורט (גרפים, אזורי דופק, הקפות) זמין אחרי הגדרת מפתח GitHub – שלב 4 ב-README."
+      : "הניתוח המפורט של האימון הזה עוד לא נוצר. הוא ייווצר בסנכרון הבא (אפשר ללחוץ ⟳ סנכרון)."}</div>`;
+    return;
+  }
+  const s = detail.series, blocks = renderSeries(a, s);
+  const extra = [decoupling(a, s), zoneNote(detail.zones)].filter(Boolean);
+  insights.push(...extra); list();
+  box.innerHTML = blocks.map(([id, title, unit]) => `<div class="card"><h3>${title}</h3><div class="note">${unit}</div><div class="chart"><canvas id="${id}"></canvas></div></div>`).join("")
+    + zonesHtml(detail.zones || []) + peaksHtml(detail.peaks || {}) + lapsHtml(a, detail.laps);
+  if (!window.Chart) return;
+  if (s.hr) seriesChart("d-hr", s, s.hr, "דופק", css("--hr"));
+  if (s.power) seriesChart("d-power", s, s.power, "הספק", css("--power"));
+  if (s.speed) {
+    if (isPaceType(a.type)) seriesChart("d-speed", s, s.speed.map(v => v > 2 ? 60 / v : null), "קצב", css("--s1"), { reverse: true, format: v => fmtClock(v * 60) });
+    else seriesChart("d-speed", s, s.speed, "מהירות", css("--s1"), { digits: 1 });
+  }
+  if (blocks.some(b => b[0] === "d-elev")) seriesChart("d-elev", s, s.elev, "גובה", css("--muted"));
+}
+
+function closeActivity() {
+  openId = null;
+  for (const id of ["d-hr", "d-power", "d-speed", "d-elev"]) { charts[id]?.destroy(); delete charts[id]; }
+}
+
 // ---------- boot ----------
 async function boot() {
   if (ENCRYPTED) await unlock();
@@ -636,6 +928,18 @@ async function boot() {
     matchMedia("(prefers-color-scheme: dark)").addEventListener("change", render);
     NARROW.addEventListener("change", render);
     document.getElementById("act-more").addEventListener("click", () => { actLimit += 20; renderActivitiesTable(bounds()); });
+    // Activity analysis: open from the table or the phone list; Back closes it.
+    const dialog = document.getElementById("act-dialog");
+    const pick = e => { const row = e.target.closest("[data-id]"); if (row) openActivity(row.dataset.id); };
+    for (const id of ["act-table", "act-list"]) {
+      const el = document.getElementById(id);
+      el.addEventListener("click", pick);
+      el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(e); } });
+    }
+    document.getElementById("act-close").addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", e => { if (e.target === dialog) dialog.close(); });
+    dialog.addEventListener("close", () => { closeActivity(); if (history.state?.act != null) history.back(); });
+    addEventListener("popstate", () => { if (dialog.open) dialog.close(); });
     if (GH) {
       const sync = document.getElementById("sync");
       sync.hidden = false;
