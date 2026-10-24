@@ -3,3 +3,4 @@ __pycache__/
 venv/
 garmin_tokens.json
 .garminconnect/
+docs/data.js
