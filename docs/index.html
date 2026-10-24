@@ -63,7 +63,15 @@ header {
 header.scrolled { border-bottom-color: var(--ring); }
 h1 { font-size: 24px; margin: 0; line-height: 1.2; }
 h2 { font-size: 17px; margin: 32px 0 12px; }
-.sub { color: var(--ink-2); font-size: 13px; }
+.sub { color: var(--ink-2); font-size: 13px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+.sync { font: inherit; font-size: 12px; color: var(--ink); background: var(--surface); border: 1px solid var(--ring); border-radius: 999px; min-height: 30px; padding: 0 12px; cursor: pointer; touch-action: manipulation; }
+.sync:disabled { opacity: .6; cursor: progress; }
+.sync .icon { display: inline-block; }
+.sync[aria-busy="true"] .icon { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .sync[aria-busy="true"] .icon { animation: none; } }
+#sync-status { color: var(--muted); font-size: 12px; }
+#sync-status a { color: inherit; }
 .lock { max-width: 360px; margin: 64px auto; background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 24px; }
 .lock h2 { margin: 0 0 4px; }
 .lock p { color: var(--ink-2); margin: 0 0 16px; }
@@ -136,7 +144,7 @@ td.num { font-variant-numeric: tabular-nums; }
   <header>
     <div>
       <h1>דשבורד גרמין</h1>
-      <div class="sub" id="updated"></div>
+      <div class="sub"><span id="updated"></span><button class="sync" id="sync" type="button" hidden><span class="icon" aria-hidden="true">⟳</span> סנכרון</button><span id="sync-status" role="status"></span></div>
     </div>
     <div class="range" id="range" role="group" aria-label="טווח זמן" hidden>
       <button data-days="30">30 יום</button>
@@ -278,7 +286,7 @@ const NARROW = matchMedia("(max-width: 640px)");
 function bounds() {
   const lastDates = [...DATA.daily, ...DATA.activities, ...DATA.body].map(r => toTime(r.date));
   const to = (lastDates.length ? Math.max(...lastDates) : Date.now()) + DAY;
-  const from = rangeDays ? to - rangeDays * DAY : Math.min(...lastDates);
+  const from = rangeDays || !lastDates.length ? to - (rangeDays || 90) * DAY : Math.min(...lastDates);
   return { from, to, prevFrom: rangeDays ? from - rangeDays * DAY : null };
 }
 
@@ -505,6 +513,12 @@ async function decrypt(password) {
   return JSON.parse(new TextDecoder().decode(plain));
 }
 
+// v2 bundles carry { data, github: { token, repo } }; v1 bundles were the data itself.
+let GH = null;
+function openBundle(bundle) {
+  if (bundle && bundle.v === 2) { DATA = bundle.data; GH = bundle.github; } else DATA = bundle;
+}
+
 function storage(action, value) {
   try {
     if (action === "get") return localStorage.getItem(PASSWORD_KEY);
@@ -517,7 +531,7 @@ async function unlock() {
   const form = document.getElementById("lock"), error = document.getElementById("lock-error"), btn = document.getElementById("unlock");
   const saved = storage("get");
   if (saved) {
-    try { DATA = await decrypt(saved); return; } catch { storage("clear"); }
+    try { openBundle(await decrypt(saved)); return; } catch { storage("clear"); }
   }
   form.hidden = false;
   document.getElementById("password").focus();
@@ -526,7 +540,7 @@ async function unlock() {
     const password = document.getElementById("password").value;
     btn.disabled = true; error.textContent = "";
     try {
-      DATA = await decrypt(password);
+      openBundle(await decrypt(password));
       if (document.getElementById("remember").checked) storage("set", password);
       form.hidden = true;
       resolve();
@@ -536,12 +550,77 @@ async function unlock() {
   }));
 }
 
+// ---------- live data from the private repo + "sync now" (needs the v2 bundle token) ----------
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+async function gh(path, { headers, ...opts } = {}) {
+  const res = await fetch(`https://api.github.com/repos/${GH.repo}${path}`, {
+    cache: "no-store", ...opts,
+    headers: { Authorization: `Bearer ${GH.token}`, Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", ...headers },
+  });
+  if (!res.ok) throw new Error(res.status === 401 || res.status === 403 ? "המפתח ל-GitHub לא תקין או חסרות לו הרשאות" : `GitHub ${res.status}`);
+  return res;
+}
+
+const loadLatest = async () => (await gh("/contents/data/garmin.json?ref=main", { headers: { Accept: "application/vnd.github.raw+json" } })).json();
+
+function setUpdated() {
+  document.getElementById("updated").textContent = DATA.updated ? "עודכן: " + new Date(DATA.updated).toLocaleString("he-IL", { dateStyle: "medium", timeStyle: "short" }) : "";
+}
+
+function setStatus(text, link) {
+  const el = document.getElementById("sync-status");
+  el.textContent = text || "";
+  if (link) { const a = document.createElement("a"); a.href = link; a.target = "_blank"; a.rel = "noopener"; a.textContent = "פרטים"; el.append(" · ", a); }
+}
+
+async function refreshLive() {
+  try {
+    const latest = await loadLatest();
+    if (latest.updated !== DATA.updated) { DATA = latest; setUpdated(); render(); }
+  } catch (e) { setStatus("מוצגים נתונים שמורים (" + e.message + ")"); }
+}
+
+// Dispatch the sync workflow, wait for that run, then reload the data it committed.
+async function syncNow() {
+  const btn = document.getElementById("sync");
+  btn.disabled = true; btn.setAttribute("aria-busy", "true");
+  try {
+    setStatus("שולח בקשה…");
+    const runs = async () => (await (await gh("/actions/workflows/sync.yml/runs?event=workflow_dispatch&per_page=5")).json()).workflow_runs;
+    const lastId = Math.max(0, ...(await runs()).map(r => r.id));
+    await gh("/actions/workflows/sync.yml/dispatches", { method: "POST", body: JSON.stringify({ ref: "main" }) });
+    let run;
+    for (let i = 0; i < 100 && run?.status !== "completed"; i++) {  // ~7 minutes
+      await sleep(4000);
+      run = (await runs()).find(r => r.id > lastId);
+      setStatus(run ? "מושך נתונים מגרמין…" : "ממתין להתחלת הסנכרון…");
+    }
+    if (run?.status !== "completed") return setStatus("הסנכרון עדיין רץ, נסו לרענן בעוד כמה דקות", run?.html_url);
+    if (run.conclusion !== "success") return setStatus("הסנכרון נכשל", run.html_url);
+    DATA = await loadLatest();
+    setUpdated(); render();
+    setStatus("עודכן ✓");
+    setTimeout(() => setStatus(""), 4000);
+  } catch (e) {
+    setStatus("הסנכרון נכשל: " + e.message);
+  } finally {
+    btn.disabled = false; btn.removeAttribute("aria-busy");
+  }
+}
+
 // ---------- boot ----------
 async function boot() {
   if (ENCRYPTED) await unlock();
+  const fresh = GH && !DATA;  // bundle built before the first sync: data only lives in GitHub
+  if (fresh) {
+    setStatus("טוען נתונים…");
+    try { DATA = await loadLatest(); setStatus(""); } catch (e) { setStatus("לא הצלחתי לטעון נתונים: " + e.message); }
+  }
+  DATA = DATA || { activities: [], daily: [], body: [] };
   document.getElementById("content").hidden = false;
   document.getElementById("range").hidden = false;
-  document.getElementById("updated").textContent = DATA.updated ? "עודכן: " + new Date(DATA.updated).toLocaleString("he-IL", { dateStyle: "medium", timeStyle: "short" }) : "";
+  setUpdated();
   if (DEMO) document.getElementById("banner").innerHTML = '<div class="banner">מוצגים <b>נתוני הדגמה</b>. הנתונים שלכם יופיעו אחרי הסנכרון הראשון (GitHub Action או <code>python fetch_garmin.py</code>).</div>';
   document.querySelectorAll(".range button").forEach(btn => btn.addEventListener("click", () => {
     document.querySelectorAll(".range button").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
@@ -557,6 +636,12 @@ async function boot() {
     matchMedia("(prefers-color-scheme: dark)").addEventListener("change", render);
     NARROW.addEventListener("change", render);
     document.getElementById("act-more").addEventListener("click", () => { actLimit += 20; renderActivitiesTable(bounds()); });
+    if (GH) {
+      const sync = document.getElementById("sync");
+      sync.hidden = false;
+      sync.addEventListener("click", syncNow);
+      if (!fresh) refreshLive();
+    }
     const header = document.querySelector("header");
     addEventListener("scroll", () => header.classList.toggle("scrolled", scrollY > 4), { passive: true });
   }
