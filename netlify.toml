@@ -1,0 +1,11 @@
+# Netlify publishes docs/ only. The build encrypts data/garmin.json into
+# docs/data.js with DASHBOARD_PASSWORD, so the raw data is never served.
+[build]
+  command = "node scripts/encrypt-data.mjs"
+  publish = "docs"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Referrer-Policy = "no-referrer"

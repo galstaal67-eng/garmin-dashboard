@@ -46,6 +46,15 @@ header { display: flex; flex-wrap: wrap; align-items: end; justify-content: spac
 h1 { font-size: 24px; margin: 0; }
 h2 { font-size: 17px; margin: 32px 0 12px; }
 .sub { color: var(--ink-2); font-size: 13px; }
+.lock { max-width: 360px; margin: 64px auto; background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 24px; }
+.lock h2 { margin: 0 0 4px; }
+.lock p { color: var(--ink-2); margin: 0 0 16px; }
+.lock input[type=password] { width: 100%; font: inherit; padding: 9px 12px; border: 1px solid var(--axis); border-radius: 8px; background: var(--page); color: var(--ink); }
+.lock label.remember { display: flex; gap: 8px; align-items: center; margin: 12px 0 16px; color: var(--ink-2); }
+.lock button { width: 100%; font: inherit; font-weight: 600; padding: 9px; border: 0; border-radius: 8px; background: var(--ink); color: var(--surface); cursor: pointer; }
+.lock button:disabled { opacity: .6; cursor: wait; }
+.lock .error { color: var(--bad); min-height: 1.5em; margin-top: 10px; font-size: 13px; }
+[hidden] { display: none !important; }
 .banner { background: var(--surface); border: 1px solid var(--ring); border-inline-start: 4px solid var(--s4); padding: 10px 14px; border-radius: 8px; margin-bottom: 16px; color: var(--ink-2); }
 .range { display: inline-flex; border: 1px solid var(--ring); border-radius: 8px; overflow: hidden; background: var(--surface); }
 .range button { border: 0; background: none; color: var(--ink-2); padding: 7px 14px; font: inherit; cursor: pointer; }
@@ -92,6 +101,17 @@ td.num { font-variant-numeric: tabular-nums; }
   </header>
   <div id="banner"></div>
 
+  <form class="lock" id="lock" hidden>
+    <h2>הדשבורד נעול</h2>
+    <p>הנתונים מוצפנים. הזינו את הסיסמה כדי לפתוח אותם.</p>
+    <input type="password" id="password" autocomplete="current-password" aria-label="סיסמה" placeholder="סיסמה" required>
+    <label class="remember"><input type="checkbox" id="remember"> לזכור במכשיר הזה</label>
+    <button type="submit" id="unlock">פתיחה</button>
+    <div class="error" id="lock-error" role="alert"></div>
+  </form>
+
+  <div id="content" hidden>
+
   <section class="tiles" id="tiles"></section>
 
   <h2>אימונים</h2>
@@ -112,6 +132,7 @@ td.num { font-variant-numeric: tabular-nums; }
     <div class="card"><h3>משקל</h3><div class="note">ק״ג</div><div class="chart"><canvas id="c-weight"></canvas></div></div>
     <div class="card"><h3>אחוז שומן</h3><div class="note">%</div><div class="chart"><canvas id="c-fat"></canvas></div></div>
     <div class="card"><h3>מסת שריר</h3><div class="note">ק״ג</div><div class="chart"><canvas id="c-muscle"></canvas></div></div>
+  </div>
   </div>
 </main>
 
@@ -138,8 +159,9 @@ const categoryOf = type => CATEGORIES.find(c => c.match(type || ""));
 
 // ---------- data ----------
 const DAY = 86400000;
-const DEMO = !window.GARMIN_DATA;
-const DATA = window.GARMIN_DATA || makeDemoData();
+const ENCRYPTED = window.GARMIN_ENC;
+const DEMO = !window.GARMIN_DATA && !ENCRYPTED;
+let DATA = window.GARMIN_DATA || (DEMO ? makeDemoData() : null);
 
 function makeDemoData() {
   let seed = 7;
@@ -380,21 +402,70 @@ function render() {
   timeLine("c-muscle", body, "muscle_kg", "מסת שריר", 1, b);
 }
 
-// ---------- boot ----------
-document.getElementById("updated").textContent = DATA.updated ? "עודכן: " + new Date(DATA.updated).toLocaleString("he-IL", { dateStyle: "medium", timeStyle: "short" }) : "";
-if (DEMO) document.getElementById("banner").innerHTML = '<div class="banner">מוצגים <b>נתוני הדגמה</b>. הריצו <code>python fetch_garmin.py</code> (או את ה-GitHub Action) כדי ליצור את <code>docs/data.js</code> עם הנתונים שלכם.</div>';
-document.querySelectorAll(".range button").forEach(btn => btn.addEventListener("click", () => {
-  document.querySelectorAll(".range button").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
-  rangeDays = +btn.dataset.days;
-  render();
-}));
-if (!window.Chart) {
-  document.getElementById("banner").insertAdjacentHTML("beforeend", '<div class="banner">ספריית הגרפים (Chart.js) לא נטענה – בדקו חיבור לאינטרנט.</div>');
-} else {
-  Chart.defaults.font.family = 'system-ui, -apple-system, "Segoe UI", sans-serif';
-  render();
-  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", render);
+// ---------- unlock (data.js encrypted by scripts/encrypt-data.mjs) ----------
+const PASSWORD_KEY = "garmin-dashboard-password";
+const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+
+async function decrypt(password) {
+  const { iter, salt, iv, data } = ENCRYPTED;
+  const material = await crypto.subtle.importKey("raw", new TextEncoder().encode(password), "PBKDF2", false, ["deriveKey"]);
+  const key = await crypto.subtle.deriveKey({ name: "PBKDF2", hash: "SHA-256", salt: b64(salt), iterations: iter },
+    material, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+  const plain = await crypto.subtle.decrypt({ name: "AES-GCM", iv: b64(iv) }, key, b64(data));
+  return JSON.parse(new TextDecoder().decode(plain));
 }
+
+function storage(action, value) {
+  try {
+    if (action === "get") return localStorage.getItem(PASSWORD_KEY);
+    if (action === "set") localStorage.setItem(PASSWORD_KEY, value);
+    if (action === "clear") localStorage.removeItem(PASSWORD_KEY);
+  } catch { return null; }
+}
+
+async function unlock() {
+  const form = document.getElementById("lock"), error = document.getElementById("lock-error"), btn = document.getElementById("unlock");
+  const saved = storage("get");
+  if (saved) {
+    try { DATA = await decrypt(saved); return; } catch { storage("clear"); }
+  }
+  form.hidden = false;
+  document.getElementById("password").focus();
+  await new Promise(resolve => form.addEventListener("submit", async e => {
+    e.preventDefault();
+    const password = document.getElementById("password").value;
+    btn.disabled = true; error.textContent = "";
+    try {
+      DATA = await decrypt(password);
+      if (document.getElementById("remember").checked) storage("set", password);
+      form.hidden = true;
+      resolve();
+    } catch {
+      error.textContent = "סיסמה שגויה";
+    } finally { btn.disabled = false; }
+  }));
+}
+
+// ---------- boot ----------
+async function boot() {
+  if (ENCRYPTED) await unlock();
+  document.getElementById("content").hidden = false;
+  document.getElementById("updated").textContent = DATA.updated ? "עודכן: " + new Date(DATA.updated).toLocaleString("he-IL", { dateStyle: "medium", timeStyle: "short" }) : "";
+  if (DEMO) document.getElementById("banner").innerHTML = '<div class="banner">מוצגים <b>נתוני הדגמה</b>. הנתונים שלכם יופיעו אחרי הסנכרון הראשון (GitHub Action או <code>python fetch_garmin.py</code>).</div>';
+  document.querySelectorAll(".range button").forEach(btn => btn.addEventListener("click", () => {
+    document.querySelectorAll(".range button").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
+    rangeDays = +btn.dataset.days;
+    render();
+  }));
+  if (!window.Chart) {
+    document.getElementById("banner").insertAdjacentHTML("beforeend", '<div class="banner">ספריית הגרפים (Chart.js) לא נטענה – בדקו חיבור לאינטרנט.</div>');
+  } else {
+    Chart.defaults.font.family = 'system-ui, -apple-system, "Segoe UI", sans-serif';
+    render();
+    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", render);
+  }
+}
+boot();
 </script>
 </body>
 </html>

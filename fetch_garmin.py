@@ -1,5 +1,6 @@
 """Pull activities, daily summaries and body composition from Garmin Connect
-into docs/data.json (and docs/data.js, so docs/index.html opens straight from disk).
+into data/garmin.json. Also writes an unencrypted docs/data.js (git-ignored) so
+docs/index.html opens straight from disk; the Netlify build encrypts its own copy.
 
 Auth, first match wins:
   1. Saved tokens in $GARMIN_TOKEN_DIR (default ~/.garminconnect)
@@ -24,7 +25,7 @@ from pathlib import Path
 from garminconnect import Garmin
 
 ROOT = Path(__file__).resolve().parent
-DATA_JSON = ROOT / "docs" / "data.json"
+DATA_JSON = ROOT / "data" / "garmin.json"
 DATA_JS = ROOT / "docs" / "data.js"
 TOKEN_DIR = Path(os.path.expanduser(os.getenv("GARMIN_TOKEN_DIR", "~/.garminconnect")))
 # Re-fetch a few recent days every sync: today's summary is partial until the day ends.
@@ -181,6 +182,7 @@ def main() -> int:
     data["updated"] = datetime.now().astimezone().isoformat(timespec="minutes")
 
     DATA_JSON.parent.mkdir(exist_ok=True)
+    DATA_JS.parent.mkdir(exist_ok=True)
     payload = json.dumps(data, ensure_ascii=False, indent=1)
     DATA_JSON.write_text(payload + "\n", encoding="utf-8")
     DATA_JS.write_text(f"window.GARMIN_DATA = {payload};\n", encoding="utf-8")
