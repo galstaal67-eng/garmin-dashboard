@@ -14,6 +14,7 @@ Usage:
 """
 
 import argparse
+import base64
 import getpass
 import json
 import os
@@ -22,7 +23,7 @@ import time
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
-from garminconnect import Garmin
+from garminconnect import Garmin, GarminConnectAuthenticationError
 
 ROOT = Path(__file__).resolve().parent
 DATA_JSON = ROOT / "data" / "garmin.json"
@@ -46,8 +47,15 @@ def connect(interactive: bool) -> Garmin:
     )
     if (TOKEN_DIR / "garmin_tokens.json").exists():
         garmin.login(str(TOKEN_DIR))
-    elif os.getenv("GARMIN_TOKENS"):
-        garmin.login(os.environ["GARMIN_TOKENS"])
+    elif os.getenv("GARMIN_TOKENS", "").strip():
+        tokens = check_tokens(os.environ["GARMIN_TOKENS"])
+        try:
+            garmin.login(tokens)
+        except GarminConnectAuthenticationError:
+            sys.exit(
+                "GARMIN_TOKENS was rejected by Garmin (expired or revoked). "
+                "Run `python fetch_garmin.py --login` again and replace the GARMIN_TOKENS secret."
+            )
     else:
         garmin.login(str(TOKEN_DIR))
 
@@ -55,6 +63,29 @@ def connect(interactive: bool) -> Garmin:
     TOKEN_DIR.mkdir(mode=0o700, parents=True, exist_ok=True)
     garmin.client.dump(str(TOKEN_DIR))
     return garmin
+
+
+def check_tokens(raw: str) -> str:
+    """Validate the GARMIN_TOKENS secret and explain what is wrong without printing it."""
+    tokens = raw.strip()
+    if not tokens.startswith("{"):
+        sys.exit(
+            "GARMIN_TOKENS is not the token JSON. Paste only the line printed by "
+            '`python fetch_garmin.py --login`, starting with {"di_token" and ending with }.'
+        )
+    try:
+        data = json.loads(tokens)
+    except json.JSONDecodeError:
+        sys.exit("GARMIN_TOKENS is cut off or not valid JSON. Copy the whole line again, from { to }.")
+    if not data.get("di_refresh_token"):
+        sys.exit("GARMIN_TOKENS has no refresh token. Run `python fetch_garmin.py --login` again and copy its output.")
+    try:  # the access token is a JWT; its expiry is not secret
+        payload = data["di_token"].split(".")[1]
+        exp = json.loads(base64.urlsafe_b64decode(payload + "=" * (-len(payload) % 4)))["exp"]
+        print(f"GARMIN_TOKENS: access token expires {datetime.fromtimestamp(exp).isoformat(timespec='minutes')}")
+    except Exception:
+        pass
+    return tokens
 
 
 def iso(d: date) -> str:
