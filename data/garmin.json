@@ -13,7 +13,14 @@
    "calories": 1.0,
    "elev_gain_m": 1.0,
    "avg_speed_kmh": 2.48,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 29.0,
+   "max_power": 38.0,
+   "norm_power": 30.0,
+   "cadence": null,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 20784438205,
@@ -28,7 +35,14 @@
    "calories": 11.0,
    "elev_gain_m": 13.0,
    "avg_speed_kmh": 10.08,
-   "training_load": 5.3
+   "training_load": 5.3,
+   "avg_power": 27.0,
+   "max_power": 148.0,
+   "norm_power": 69.0,
+   "cadence": 17.0,
+   "te_aerobic": 0.6,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 20791213428,
@@ -43,7 +57,14 @@
    "calories": 2.0,
    "elev_gain_m": 1.0,
    "avg_speed_kmh": 7.13,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 24.0,
+   "max_power": 35.0,
+   "norm_power": 25.0,
+   "cadence": 29.0,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 20822216353,
@@ -58,7 +79,14 @@
    "calories": 431.0,
    "elev_gain_m": 36.0,
    "avg_speed_kmh": 8.99,
-   "training_load": 82.7
+   "training_load": 82.7,
+   "avg_power": 322.0,
+   "max_power": 429.0,
+   "norm_power": 324.0,
+   "cadence": 148.0,
+   "te_aerobic": 3.2,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 20851581207,
@@ -73,7 +101,14 @@
    "calories": 225.0,
    "elev_gain_m": 36.0,
    "avg_speed_kmh": 7.11,
-   "training_load": 64.2
+   "training_load": 64.2,
+   "avg_power": 215.0,
+   "max_power": 760.0,
+   "norm_power": 291.0,
+   "cadence": 114.0,
+   "te_aerobic": 2.3,
+   "te_anaerobic": 2.2,
+   "te_label": "RECOVERY"
   },
   {
    "id": 20860759864,
@@ -88,7 +123,14 @@
    "calories": 436.0,
    "elev_gain_m": 73.0,
    "avg_speed_kmh": 4.44,
-   "training_load": 11.7
+   "training_load": 11.7,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": 79.0,
+   "te_aerobic": 1.1,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 20880372933,
@@ -103,7 +145,14 @@
    "calories": 287.0,
    "elev_gain_m": 35.0,
    "avg_speed_kmh": 9.06,
-   "training_load": 58.1
+   "training_load": 58.1,
+   "avg_power": 318.0,
+   "max_power": 470.0,
+   "norm_power": 329.0,
+   "cadence": 144.0,
+   "te_aerobic": 2.9,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 20930993930,
@@ -118,7 +167,14 @@
    "calories": 360.0,
    "elev_gain_m": 64.0,
    "avg_speed_kmh": 4.76,
-   "training_load": 13.1
+   "training_load": 13.1,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": 89.0,
+   "te_aerobic": 1.3,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 20940351227,
@@ -133,7 +189,14 @@
    "calories": 138.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 3.84,
-   "training_load": 2.7
+   "training_load": 2.7,
+   "avg_power": 107.0,
+   "max_power": 305.0,
+   "norm_power": 110.0,
+   "cadence": 102.0,
+   "te_aerobic": 0.2,
+   "te_anaerobic": 0.0,
+   "te_label": "UNKNOWN"
   },
   {
    "id": 21169427561,
@@ -148,7 +211,14 @@
    "calories": 313.0,
    "elev_gain_m": 46.0,
    "avg_speed_kmh": 9.14,
-   "training_load": 112.4
+   "training_load": 112.4,
+   "avg_power": 239.0,
+   "max_power": 316.0,
+   "norm_power": 244.0,
+   "cadence": 152.0,
+   "te_aerobic": 3.9,
+   "te_anaerobic": 0.0,
+   "te_label": "LACTATE_THRESHOLD"
   },
   {
    "id": 21238388445,
@@ -163,7 +233,14 @@
    "calories": 301.0,
    "elev_gain_m": 30.0,
    "avg_speed_kmh": 6.59,
-   "training_load": 33.5
+   "training_load": 33.5,
+   "avg_power": 199.0,
+   "max_power": 387.0,
+   "norm_power": 259.0,
+   "cadence": 117.0,
+   "te_aerobic": 2.3,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 21264389856,
@@ -178,7 +255,14 @@
    "calories": 373.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 9.17,
-   "training_load": 46.5
+   "training_load": 46.5,
+   "avg_power": 315.0,
+   "max_power": 379.0,
+   "norm_power": 318.0,
+   "cadence": 146.0,
+   "te_aerobic": 2.6,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21299590777,
@@ -193,7 +277,14 @@
    "calories": 461.0,
    "elev_gain_m": 153.0,
    "avg_speed_kmh": 30.79,
-   "training_load": 65.7
+   "training_load": 65.7,
+   "avg_power": 134.0,
+   "max_power": 369.0,
+   "norm_power": 150.0,
+   "cadence": 67.0,
+   "te_aerobic": 3.2,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21306534269,
@@ -208,7 +299,14 @@
    "calories": 514.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 9.45,
-   "training_load": 76.7
+   "training_load": 76.7,
+   "avg_power": 325.0,
+   "max_power": 382.0,
+   "norm_power": 325.0,
+   "cadence": 147.0,
+   "te_aerobic": 3.2,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21315893669,
@@ -223,7 +321,14 @@
    "calories": 37.0,
    "elev_gain_m": 28.0,
    "avg_speed_kmh": 15.21,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 147.0,
+   "max_power": 289.0,
+   "norm_power": 166.0,
+   "cadence": 60.0,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 21316005109,
@@ -238,7 +343,14 @@
    "calories": 63.0,
    "elev_gain_m": 32.0,
    "avg_speed_kmh": 18.69,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 158.0,
+   "max_power": 254.0,
+   "norm_power": 172.0,
+   "cadence": 59.0,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 21316497467,
@@ -253,7 +365,14 @@
    "calories": 387.0,
    "elev_gain_m": 276.0,
    "avg_speed_kmh": 22.83,
-   "training_load": 69.4
+   "training_load": 69.4,
+   "avg_power": 160.0,
+   "max_power": 340.0,
+   "norm_power": 173.0,
+   "cadence": 61.0,
+   "te_aerobic": 3.2,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21354792367,
@@ -268,7 +387,14 @@
    "calories": 427.0,
    "elev_gain_m": 21.0,
    "avg_speed_kmh": 9.39,
-   "training_load": 73.7
+   "training_load": 73.7,
+   "avg_power": 333.0,
+   "max_power": 467.0,
+   "norm_power": 333.0,
+   "cadence": 148.0,
+   "te_aerobic": 3.1,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21361484303,
@@ -283,7 +409,14 @@
    "calories": 10.0,
    "elev_gain_m": 8.0,
    "avg_speed_kmh": 8.13,
-   "training_load": 0.8
+   "training_load": 0.8,
+   "avg_power": 55.0,
+   "max_power": 129.0,
+   "norm_power": 65.0,
+   "cadence": 57.0,
+   "te_aerobic": 0.0,
+   "te_anaerobic": 0.0,
+   "te_label": "UNKNOWN"
   },
   {
    "id": 21361855929,
@@ -298,7 +431,14 @@
    "calories": 389.0,
    "elev_gain_m": 219.0,
    "avg_speed_kmh": 28.35,
-   "training_load": 79.7
+   "training_load": 79.7,
+   "avg_power": 159.0,
+   "max_power": 442.0,
+   "norm_power": 169.0,
+   "cadence": 70.0,
+   "te_aerobic": 3.4,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21426996604,
@@ -313,7 +453,14 @@
    "calories": 7.0,
    "elev_gain_m": 2.0,
    "avg_speed_kmh": 27.49,
-   "training_load": 1.3
+   "training_load": 1.3,
+   "avg_power": 101.0,
+   "max_power": 223.0,
+   "norm_power": 131.0,
+   "cadence": 66.0,
+   "te_aerobic": 0.1,
+   "te_anaerobic": 0.0,
+   "te_label": "UNKNOWN"
   },
   {
    "id": 21427937024,
@@ -328,7 +475,14 @@
    "calories": 856.0,
    "elev_gain_m": 344.0,
    "avg_speed_kmh": 30.27,
-   "training_load": 131.2
+   "training_load": 131.2,
+   "avg_power": 144.0,
+   "max_power": 378.0,
+   "norm_power": 159.0,
+   "cadence": 69.0,
+   "te_aerobic": 4.1,
+   "te_anaerobic": 0.4,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21427956589,
@@ -343,7 +497,14 @@
    "calories": 1053.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 28.83,
-   "training_load": 119.7
+   "training_load": 119.7,
+   "avg_power": 141.0,
+   "max_power": 378.0,
+   "norm_power": 158.0,
+   "cadence": 69.0,
+   "te_aerobic": 4.0,
+   "te_anaerobic": 0.1,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21441271576,
@@ -358,7 +519,14 @@
    "calories": 357.0,
    "elev_gain_m": 38.0,
    "avg_speed_kmh": 8.68,
-   "training_load": 102.8
+   "training_load": 102.8,
+   "avg_power": 301.0,
+   "max_power": 696.0,
+   "norm_power": 366.0,
+   "cadence": 133.0,
+   "te_aerobic": 2.7,
+   "te_anaerobic": 2.8,
+   "te_label": "ANAEROBIC_CAPACITY"
   },
   {
    "id": 21462836434,
@@ -373,7 +541,14 @@
    "calories": 545.0,
    "elev_gain_m": 376.0,
    "avg_speed_kmh": 22.34,
-   "training_load": 97.3
+   "training_load": 97.3,
+   "avg_power": 153.0,
+   "max_power": 307.0,
+   "norm_power": 161.0,
+   "cadence": 70.0,
+   "te_aerobic": 3.6,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21462842139,
@@ -388,7 +563,14 @@
    "calories": 657.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 21.7,
-   "training_load": 90.1
+   "training_load": 90.1,
+   "avg_power": 153.0,
+   "max_power": 301.0,
+   "norm_power": 161.0,
+   "cadence": 70.0,
+   "te_aerobic": 3.5,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21482330982,
@@ -403,7 +585,14 @@
    "calories": 249.0,
    "elev_gain_m": 18.0,
    "avg_speed_kmh": 9.4,
-   "training_load": 46.9
+   "training_load": 46.9,
+   "avg_power": 333.0,
+   "max_power": 467.0,
+   "norm_power": 338.0,
+   "cadence": 146.0,
+   "te_aerobic": 2.6,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21501659890,
@@ -418,7 +607,14 @@
    "calories": 23.0,
    "elev_gain_m": 0.0,
    "avg_speed_kmh": 55.85,
-   "training_load": 3.8
+   "training_load": 3.8,
+   "avg_power": 111.0,
+   "max_power": 298.0,
+   "norm_power": 120.0,
+   "cadence": 80.0,
+   "te_aerobic": 0.4,
+   "te_anaerobic": 0.0,
+   "te_label": "UNKNOWN"
   },
   {
    "id": 21502569074,
@@ -433,7 +629,14 @@
    "calories": 719.0,
    "elev_gain_m": 167.0,
    "avg_speed_kmh": 32.41,
-   "training_load": 139.0
+   "training_load": 139.0,
+   "avg_power": 160.0,
+   "max_power": 407.0,
+   "norm_power": 167.0,
+   "cadence": 71.0,
+   "te_aerobic": 4.2,
+   "te_anaerobic": 0.3,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21502615170,
@@ -448,7 +651,14 @@
    "calories": 863.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 31.62,
-   "training_load": 125.8
+   "training_load": 125.8,
+   "avg_power": 158.0,
+   "max_power": 409.0,
+   "norm_power": 166.0,
+   "cadence": 70.0,
+   "te_aerobic": 4.1,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21567483496,
@@ -463,7 +673,14 @@
    "calories": 680.0,
    "elev_gain_m": 162.0,
    "avg_speed_kmh": 30.76,
-   "training_load": 117.2
+   "training_load": 117.2,
+   "avg_power": 152.0,
+   "max_power": 365.0,
+   "norm_power": 163.0,
+   "cadence": 70.0,
+   "te_aerobic": 3.9,
+   "te_anaerobic": 0.5,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21573910934,
@@ -478,7 +695,14 @@
    "calories": 486.0,
    "elev_gain_m": 663.0,
    "avg_speed_kmh": 13.18,
-   "training_load": 72.3
+   "training_load": 72.3,
+   "avg_power": 140.0,
+   "max_power": 280.0,
+   "norm_power": 146.0,
+   "cadence": 67.0,
+   "te_aerobic": 3.3,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21648186248,
@@ -493,7 +717,14 @@
    "calories": 960.0,
    "elev_gain_m": 623.0,
    "avg_speed_kmh": 27.27,
-   "training_load": 169.9
+   "training_load": 169.9,
+   "avg_power": 150.0,
+   "max_power": 468.0,
+   "norm_power": 166.0,
+   "cadence": 67.0,
+   "te_aerobic": 4.5,
+   "te_anaerobic": 1.9,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21670194199,
@@ -508,7 +739,14 @@
    "calories": 424.0,
    "elev_gain_m": 35.0,
    "avg_speed_kmh": 9.59,
-   "training_load": 75.8
+   "training_load": 75.8,
+   "avg_power": 340.0,
+   "max_power": 449.0,
+   "norm_power": 342.0,
+   "cadence": 147.0,
+   "te_aerobic": 3.2,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21789856696,
@@ -523,7 +761,14 @@
    "calories": 15.0,
    "elev_gain_m": 5.0,
    "avg_speed_kmh": 22.45,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 103.0,
+   "max_power": 229.0,
+   "norm_power": 121.0,
+   "cadence": 70.0,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 21790787235,
@@ -538,7 +783,14 @@
    "calories": 549.0,
    "elev_gain_m": 108.0,
    "avg_speed_kmh": 29.98,
-   "training_load": 102.2
+   "training_load": 102.2,
+   "avg_power": 155.0,
+   "max_power": 330.0,
+   "norm_power": 163.0,
+   "cadence": 68.0,
+   "te_aerobic": 3.7,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21791124531,
@@ -553,7 +805,14 @@
    "calories": 663.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 30.61,
-   "training_load": 96.4
+   "training_load": 96.4,
+   "avg_power": 154.0,
+   "max_power": 328.0,
+   "norm_power": 163.0,
+   "cadence": 68.0,
+   "te_aerobic": 3.6,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21846334452,
@@ -568,7 +827,14 @@
    "calories": 671.0,
    "elev_gain_m": 67.0,
    "avg_speed_kmh": 9.27,
-   "training_load": 98.7
+   "training_load": 98.7,
+   "avg_power": 336.0,
+   "max_power": 469.0,
+   "norm_power": 338.0,
+   "cadence": 149.0,
+   "te_aerobic": 3.5,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21866559993,
@@ -583,7 +849,14 @@
    "calories": 538.0,
    "elev_gain_m": 376.0,
    "avg_speed_kmh": 21.87,
-   "training_load": 83.1
+   "training_load": 83.1,
+   "avg_power": 148.0,
+   "max_power": 334.0,
+   "norm_power": 157.0,
+   "cadence": 72.0,
+   "te_aerobic": 3.4,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21886001672,
@@ -598,7 +871,14 @@
    "calories": 250.0,
    "elev_gain_m": 14.0,
    "avg_speed_kmh": 9.49,
-   "training_load": 52.9
+   "training_load": 52.9,
+   "avg_power": 333.0,
+   "max_power": 427.0,
+   "norm_power": 336.0,
+   "cadence": 148.0,
+   "te_aerobic": 2.8,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21903992083,
@@ -613,7 +893,14 @@
    "calories": 409.0,
    "elev_gain_m": 61.0,
    "avg_speed_kmh": 31.99,
-   "training_load": 94.6
+   "training_load": 94.6,
+   "avg_power": 166.0,
+   "max_power": 389.0,
+   "norm_power": 171.0,
+   "cadence": 75.0,
+   "te_aerobic": 3.6,
+   "te_anaerobic": 0.1,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21904000357,
@@ -628,7 +915,14 @@
    "calories": 493.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 31.55,
-   "training_load": 85.7
+   "training_load": 85.7,
+   "avg_power": 165.0,
+   "max_power": 388.0,
+   "norm_power": 171.0,
+   "cadence": 75.0,
+   "te_aerobic": 3.5,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 21937505221,
@@ -643,7 +937,14 @@
    "calories": 206.0,
    "elev_gain_m": 15.0,
    "avg_speed_kmh": 10.2,
-   "training_load": 49.2
+   "training_load": 49.2,
+   "avg_power": 372.0,
+   "max_power": 523.0,
+   "norm_power": 372.0,
+   "cadence": 146.0,
+   "te_aerobic": 2.7,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22003830429,
@@ -658,7 +959,14 @@
    "calories": 575.0,
    "elev_gain_m": 198.0,
    "avg_speed_kmh": 31.06,
-   "training_load": 128.2
+   "training_load": 128.2,
+   "avg_power": 151.0,
+   "max_power": 378.0,
+   "norm_power": 164.0,
+   "cadence": 68.0,
+   "te_aerobic": 4.0,
+   "te_anaerobic": 0.9,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22013271568,
@@ -673,7 +981,14 @@
    "calories": 698.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 31.49,
-   "training_load": 115.2
+   "training_load": 115.2,
+   "avg_power": 151.0,
+   "max_power": 372.0,
+   "norm_power": 164.0,
+   "cadence": 68.0,
+   "te_aerobic": 3.8,
+   "te_anaerobic": 0.6,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22027712421,
@@ -688,7 +1003,14 @@
    "calories": 363.0,
    "elev_gain_m": 230.0,
    "avg_speed_kmh": 32.29,
-   "training_load": 111.6
+   "training_load": 111.6,
+   "avg_power": 171.0,
+   "max_power": 391.0,
+   "norm_power": 187.0,
+   "cadence": 72.0,
+   "te_aerobic": 3.5,
+   "te_anaerobic": 2.1,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22056241284,
@@ -703,7 +1025,14 @@
    "calories": 231.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 6.92,
-   "training_load": null
+   "training_load": null,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": null,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 22049762520,
@@ -718,7 +1047,14 @@
    "calories": 581.0,
    "elev_gain_m": 80.0,
    "avg_speed_kmh": 32.27,
-   "training_load": 102.2
+   "training_load": 102.2,
+   "avg_power": 160.0,
+   "max_power": 434.0,
+   "norm_power": 165.0,
+   "cadence": 74.0,
+   "te_aerobic": 3.7,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22068158941,
@@ -733,7 +1069,14 @@
    "calories": 366.0,
    "elev_gain_m": 110.0,
    "avg_speed_kmh": 32.9,
-   "training_load": 104.1
+   "training_load": 104.1,
+   "avg_power": 175.0,
+   "max_power": 378.0,
+   "norm_power": 187.0,
+   "cadence": 76.0,
+   "te_aerobic": 3.6,
+   "te_anaerobic": 1.2,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22068236338,
@@ -748,7 +1091,14 @@
    "calories": 437.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 32.86,
-   "training_load": 91.9
+   "training_load": 91.9,
+   "avg_power": 173.0,
+   "max_power": 375.0,
+   "norm_power": 186.0,
+   "cadence": 75.0,
+   "te_aerobic": 3.5,
+   "te_anaerobic": 0.1,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22094812632,
@@ -763,7 +1113,14 @@
    "calories": 691.0,
    "elev_gain_m": 375.0,
    "avg_speed_kmh": 27.36,
-   "training_load": 131.1
+   "training_load": 131.1,
+   "avg_power": 159.0,
+   "max_power": 328.0,
+   "norm_power": 171.0,
+   "cadence": 68.0,
+   "te_aerobic": 4.1,
+   "te_anaerobic": 0.4,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22095291312,
@@ -778,7 +1135,14 @@
    "calories": 835.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 26.89,
-   "training_load": 118.3
+   "training_load": 118.3,
+   "avg_power": 159.0,
+   "max_power": 323.0,
+   "norm_power": 171.0,
+   "cadence": 68.0,
+   "te_aerobic": 3.9,
+   "te_anaerobic": 0.1,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22169357228,
@@ -793,7 +1157,14 @@
    "calories": 15.0,
    "elev_gain_m": 4.0,
    "avg_speed_kmh": 34.04,
-   "training_load": 1.4
+   "training_load": 1.4,
+   "avg_power": 85.0,
+   "max_power": 137.0,
+   "norm_power": 86.0,
+   "cadence": 59.0,
+   "te_aerobic": 0.1,
+   "te_anaerobic": 0.0,
+   "te_label": "UNKNOWN"
   },
   {
    "id": 22169969065,
@@ -808,7 +1179,14 @@
    "calories": 621.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 27.72,
-   "training_load": 85.8
+   "training_load": 85.8,
+   "avg_power": 143.0,
+   "max_power": 353.0,
+   "norm_power": 165.0,
+   "cadence": 68.0,
+   "te_aerobic": 3.5,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22169998791,
@@ -823,7 +1201,14 @@
    "calories": 463.0,
    "elev_gain_m": 238.0,
    "avg_speed_kmh": 28.3,
-   "training_load": 88.6
+   "training_load": 88.6,
+   "avg_power": 153.0,
+   "max_power": 371.0,
+   "norm_power": 169.0,
+   "cadence": 70.0,
+   "te_aerobic": 3.5,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22247783014,
@@ -838,7 +1223,14 @@
    "calories": 741.0,
    "elev_gain_m": 85.0,
    "avg_speed_kmh": 2.81,
-   "training_load": 14.9
+   "training_load": 14.9,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": 40.0,
+   "te_aerobic": 1.4,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 22318192148,
@@ -853,7 +1245,14 @@
    "calories": 651.0,
    "elev_gain_m": 375.0,
    "avg_speed_kmh": 25.59,
-   "training_load": 108.9
+   "training_load": 108.9,
+   "avg_power": 140.0,
+   "max_power": 318.0,
+   "norm_power": 155.0,
+   "cadence": 69.0,
+   "te_aerobic": 3.8,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22318208570,
@@ -868,7 +1267,14 @@
    "calories": 804.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 25.71,
-   "training_load": 102.3
+   "training_load": 102.3,
+   "avg_power": 139.0,
+   "max_power": 316.0,
+   "norm_power": 155.0,
+   "cadence": 68.0,
+   "te_aerobic": 3.7,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22384518339,
@@ -883,7 +1289,14 @@
    "calories": 644.0,
    "elev_gain_m": 223.0,
    "avg_speed_kmh": 28.87,
-   "training_load": 82.3
+   "training_load": 82.3,
+   "avg_power": 136.0,
+   "max_power": 307.0,
+   "norm_power": 145.0,
+   "cadence": 67.0,
+   "te_aerobic": 3.4,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22395160429,
@@ -898,7 +1311,14 @@
    "calories": 524.0,
    "elev_gain_m": 71.0,
    "avg_speed_kmh": 31.17,
-   "training_load": 97.4
+   "training_load": 97.4,
+   "avg_power": 150.0,
+   "max_power": 379.0,
+   "norm_power": 157.0,
+   "cadence": 73.0,
+   "te_aerobic": 3.6,
+   "te_anaerobic": 0.2,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22401222306,
@@ -913,7 +1333,14 @@
    "calories": 641.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 21.8,
-   "training_load": 92.7
+   "training_load": 92.7,
+   "avg_power": 149.0,
+   "max_power": 376.0,
+   "norm_power": 159.0,
+   "cadence": 73.0,
+   "te_aerobic": 3.5,
+   "te_anaerobic": 0.1,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22440129012,
@@ -928,7 +1355,14 @@
    "calories": 21.0,
    "elev_gain_m": 16.0,
    "avg_speed_kmh": 22.0,
-   "training_load": 4.1
+   "training_load": 4.1,
+   "avg_power": 122.0,
+   "max_power": 220.0,
+   "norm_power": 130.0,
+   "cadence": 68.0,
+   "te_aerobic": 0.4,
+   "te_anaerobic": 0.0,
+   "te_label": "UNKNOWN"
   },
   {
    "id": 22441358578,
@@ -943,7 +1377,14 @@
    "calories": 710.0,
    "elev_gain_m": 43.0,
    "avg_speed_kmh": 33.21,
-   "training_load": 119.4
+   "training_load": 119.4,
+   "avg_power": 149.0,
+   "max_power": 387.0,
+   "norm_power": 154.0,
+   "cadence": 74.0,
+   "te_aerobic": 3.9,
+   "te_anaerobic": 0.3,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22453911987,
@@ -958,7 +1399,14 @@
    "calories": 194.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 0.0,
-   "training_load": 21.3
+   "training_load": 21.3,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": null,
+   "te_aerobic": 1.9,
+   "te_anaerobic": 0.5,
+   "te_label": "RECOVERY"
   },
   {
    "id": 22455221246,
@@ -973,7 +1421,14 @@
    "calories": 344.0,
    "elev_gain_m": 51.0,
    "avg_speed_kmh": 4.58,
-   "training_load": 12.1
+   "training_load": 12.1,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": 83.0,
+   "te_aerobic": 1.4,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 22486190948,
@@ -988,7 +1443,14 @@
    "calories": 70.0,
    "elev_gain_m": 63.0,
    "avg_speed_kmh": 14.82,
-   "training_load": 10.2
+   "training_load": 10.2,
+   "avg_power": 109.0,
+   "max_power": 255.0,
+   "norm_power": 113.0,
+   "cadence": 85.0,
+   "te_aerobic": 1.1,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 22487036452,
@@ -1003,7 +1465,14 @@
    "calories": 461.0,
    "elev_gain_m": 297.0,
    "avg_speed_kmh": 25.33,
-   "training_load": 85.7
+   "training_load": 85.7,
+   "avg_power": 144.0,
+   "max_power": 301.0,
+   "norm_power": 159.0,
+   "cadence": 68.0,
+   "te_aerobic": 3.4,
+   "te_anaerobic": 0.3,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22487586287,
@@ -1018,7 +1487,14 @@
    "calories": 209.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 0.0,
-   "training_load": 6.0
+   "training_load": 6.0,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": null,
+   "te_aerobic": 0.5,
+   "te_anaerobic": 0.1,
+   "te_label": "RECOVERY"
   },
   {
    "id": 22491606971,
@@ -1033,7 +1509,14 @@
    "calories": 532.0,
    "elev_gain_m": 22.0,
    "avg_speed_kmh": 3.66,
-   "training_load": 10.4
+   "training_load": 10.4,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": 69.0,
+   "te_aerobic": 1.2,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 22511404498,
@@ -1048,7 +1531,14 @@
    "calories": 35.0,
    "elev_gain_m": 2.0,
    "avg_speed_kmh": 30.1,
-   "training_load": 4.8
+   "training_load": 4.8,
+   "avg_power": 108.0,
+   "max_power": 194.0,
+   "norm_power": 107.0,
+   "cadence": 65.0,
+   "te_aerobic": 0.5,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 22511714025,
@@ -1063,7 +1553,14 @@
    "calories": 302.0,
    "elev_gain_m": 69.0,
    "avg_speed_kmh": 33.2,
-   "training_load": 74.9
+   "training_load": 74.9,
+   "avg_power": 174.0,
+   "max_power": 451.0,
+   "norm_power": 185.0,
+   "cadence": 73.0,
+   "te_aerobic": 3.3,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22511725165,
@@ -1078,7 +1575,14 @@
    "calories": 408.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 30.49,
-   "training_load": 72.1
+   "training_load": 72.1,
+   "avg_power": 161.0,
+   "max_power": 449.0,
+   "norm_power": 179.0,
+   "cadence": 71.0,
+   "te_aerobic": 3.3,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22512030279,
@@ -1093,7 +1597,14 @@
    "calories": 147.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 0.0,
-   "training_load": 16.6
+   "training_load": 16.6,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": null,
+   "te_aerobic": 1.9,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 22593903119,
@@ -1108,7 +1619,14 @@
    "calories": 352.0,
    "elev_gain_m": 70.0,
    "avg_speed_kmh": 5.81,
-   "training_load": 14.3
+   "training_load": 14.3,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": 83.0,
+   "te_aerobic": 1.6,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 22609126118,
@@ -1123,7 +1641,14 @@
    "calories": 156.0,
    "elev_gain_m": 27.0,
    "avg_speed_kmh": 3.72,
-   "training_load": 5.0
+   "training_load": 5.0,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": 68.0,
+   "te_aerobic": 0.5,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 22631683392,
@@ -1138,7 +1663,14 @@
    "calories": 536.0,
    "elev_gain_m": 376.0,
    "avg_speed_kmh": 23.16,
-   "training_load": 105.2
+   "training_load": 105.2,
+   "avg_power": 156.0,
+   "max_power": 345.0,
+   "norm_power": 166.0,
+   "cadence": 71.0,
+   "te_aerobic": 3.8,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22633518196,
@@ -1153,7 +1685,14 @@
    "calories": 638.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 23.23,
-   "training_load": 96.1
+   "training_load": 96.1,
+   "avg_power": 157.0,
+   "max_power": 343.0,
+   "norm_power": 167.0,
+   "cadence": 70.0,
+   "te_aerobic": 3.6,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22653534079,
@@ -1168,7 +1707,14 @@
    "calories": 665.0,
    "elev_gain_m": 375.0,
    "avg_speed_kmh": 26.97,
-   "training_load": 129.1
+   "training_load": 129.1,
+   "avg_power": 151.0,
+   "max_power": 333.0,
+   "norm_power": 167.0,
+   "cadence": 66.0,
+   "te_aerobic": 4.1,
+   "te_anaerobic": 0.1,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22657393973,
@@ -1183,7 +1729,14 @@
    "calories": 302.0,
    "elev_gain_m": 12.0,
    "avg_speed_kmh": 2.24,
-   "training_load": 4.9
+   "training_load": 4.9,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": 31.0,
+   "te_aerobic": 0.5,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 22738211730,
@@ -1198,7 +1751,14 @@
    "calories": 420.0,
    "elev_gain_m": 437.0,
    "avg_speed_kmh": 41.84,
-   "training_load": 106.4
+   "training_load": 106.4,
+   "avg_power": 163.0,
+   "max_power": 539.0,
+   "norm_power": 186.0,
+   "cadence": 82.0,
+   "te_aerobic": 3.5,
+   "te_anaerobic": 1.9,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22740648806,
@@ -1213,7 +1773,14 @@
    "calories": 479.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 41.8,
-   "training_load": 97.6
+   "training_load": 97.6,
+   "avg_power": 164.0,
+   "max_power": 538.0,
+   "norm_power": 189.0,
+   "cadence": 82.0,
+   "te_aerobic": 3.5,
+   "te_anaerobic": 1.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22810310806,
@@ -1228,7 +1795,14 @@
    "calories": 118.0,
    "elev_gain_m": 7.0,
    "avg_speed_kmh": 29.56,
-   "training_load": 21.1
+   "training_load": 21.1,
+   "avg_power": 142.0,
+   "max_power": 340.0,
+   "norm_power": 154.0,
+   "cadence": 76.0,
+   "te_aerobic": 2.1,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 22810363373,
@@ -1243,7 +1817,14 @@
    "calories": 9.0,
    "elev_gain_m": 1.0,
    "avg_speed_kmh": 23.45,
-   "training_load": 1.4
+   "training_load": 1.4,
+   "avg_power": 121.0,
+   "max_power": 196.0,
+   "norm_power": 129.0,
+   "cadence": 65.0,
+   "te_aerobic": 0.1,
+   "te_anaerobic": 0.0,
+   "te_label": "UNKNOWN"
   },
   {
    "id": 22816250838,
@@ -1258,7 +1839,14 @@
    "calories": 28.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 22.41,
-   "training_load": 10.3
+   "training_load": 10.3,
+   "avg_power": 97.0,
+   "max_power": 253.0,
+   "norm_power": 124.0,
+   "cadence": 65.0,
+   "te_aerobic": 1.1,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 22818033710,
@@ -1273,7 +1861,14 @@
    "calories": 839.0,
    "elev_gain_m": 372.0,
    "avg_speed_kmh": 28.16,
-   "training_load": 138.5
+   "training_load": 138.5,
+   "avg_power": 149.0,
+   "max_power": 303.0,
+   "norm_power": 156.0,
+   "cadence": 69.0,
+   "te_aerobic": 4.2,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22834075296,
@@ -1288,7 +1883,14 @@
    "calories": 157.0,
    "elev_gain_m": 92.0,
    "avg_speed_kmh": 34.88,
-   "training_load": 39.7
+   "training_load": 39.7,
+   "avg_power": 144.0,
+   "max_power": 289.0,
+   "norm_power": 160.0,
+   "cadence": 82.0,
+   "te_aerobic": 2.6,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22834494830,
@@ -1303,7 +1905,14 @@
    "calories": 135.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 0.0,
-   "training_load": 22.2
+   "training_load": 22.2,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": null,
+   "te_aerobic": 2.1,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 22855483853,
@@ -1318,7 +1927,14 @@
    "calories": 326.0,
    "elev_gain_m": 74.0,
    "avg_speed_kmh": 34.17,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 162.0,
+   "max_power": 303.0,
+   "norm_power": 169.0,
+   "cadence": 71.0,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 22855985036,
@@ -1333,7 +1949,14 @@
    "calories": 153.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 0.0,
-   "training_load": null
+   "training_load": null,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": null,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 22856994398,
@@ -1348,7 +1971,14 @@
    "calories": 382.0,
    "elev_gain_m": 59.0,
    "avg_speed_kmh": 4.32,
-   "training_load": 14.1
+   "training_load": 14.1,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": 81.0,
+   "te_aerobic": 1.6,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 22898082360,
@@ -1363,7 +1993,14 @@
    "calories": 5.0,
    "elev_gain_m": 1.0,
    "avg_speed_kmh": 15.6,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 48.0,
+   "max_power": 152.0,
+   "norm_power": 75.0,
+   "cadence": 24.0,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 22899357492,
@@ -1378,7 +2015,14 @@
    "calories": 804.0,
    "elev_gain_m": 394.0,
    "avg_speed_kmh": 29.06,
-   "training_load": 149.1
+   "training_load": 149.1,
+   "avg_power": 158.0,
+   "max_power": 347.0,
+   "norm_power": 168.0,
+   "cadence": 68.0,
+   "te_aerobic": 4.3,
+   "te_anaerobic": 0.6,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22900072927,
@@ -1393,7 +2037,14 @@
    "calories": 132.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 0.0,
-   "training_load": 9.3
+   "training_load": 9.3,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": null,
+   "te_aerobic": 1.0,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 22902121330,
@@ -1408,7 +2059,14 @@
    "calories": 277.0,
    "elev_gain_m": 39.0,
    "avg_speed_kmh": 26.38,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 45.0,
+   "max_power": 96.0,
+   "norm_power": 49.0,
+   "cadence": 44.0,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 22944657009,
@@ -1423,7 +2081,14 @@
    "calories": 336.0,
    "elev_gain_m": 194.0,
    "avg_speed_kmh": 26.09,
-   "training_load": 78.5
+   "training_load": 78.5,
+   "avg_power": 157.0,
+   "max_power": 346.0,
+   "norm_power": 168.0,
+   "cadence": 68.0,
+   "te_aerobic": 3.3,
+   "te_anaerobic": 0.2,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22960158744,
@@ -1438,7 +2103,14 @@
    "calories": 362.0,
    "elev_gain_m": 222.0,
    "avg_speed_kmh": 27.23,
-   "training_load": 82.7
+   "training_load": 82.7,
+   "avg_power": 157.0,
+   "max_power": 357.0,
+   "norm_power": 171.0,
+   "cadence": 72.0,
+   "te_aerobic": 3.4,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22969279637,
@@ -1453,7 +2125,14 @@
    "calories": 260.0,
    "elev_gain_m": 139.0,
    "avg_speed_kmh": 9.33,
-   "training_load": 31.8
+   "training_load": 31.8,
+   "avg_power": 324.0,
+   "max_power": 533.0,
+   "norm_power": 326.0,
+   "cadence": 149.0,
+   "te_aerobic": 2.4,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 22969958330,
@@ -1468,7 +2147,14 @@
    "calories": 226.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 0.0,
-   "training_load": 13.0
+   "training_load": 13.0,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": null,
+   "te_aerobic": 1.5,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 22981191856,
@@ -1483,7 +2169,14 @@
    "calories": 864.0,
    "elev_gain_m": 1234.0,
    "avg_speed_kmh": 14.23,
-   "training_load": 132.3
+   "training_load": 132.3,
+   "avg_power": 154.0,
+   "max_power": 308.0,
+   "norm_power": 161.0,
+   "cadence": 62.0,
+   "te_aerobic": 4.2,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 23055336295,
@@ -1498,7 +2191,14 @@
    "calories": 418.0,
    "elev_gain_m": 69.0,
    "avg_speed_kmh": 41.77,
-   "training_load": 86.3
+   "training_load": 86.3,
+   "avg_power": 159.0,
+   "max_power": 370.0,
+   "norm_power": 167.0,
+   "cadence": 71.0,
+   "te_aerobic": 3.4,
+   "te_anaerobic": 0.3,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 23066848379,
@@ -1513,7 +2213,14 @@
    "calories": 15.0,
    "elev_gain_m": 7.0,
    "avg_speed_kmh": 25.86,
-   "training_load": 1.8
+   "training_load": 1.8,
+   "avg_power": 89.0,
+   "max_power": 300.0,
+   "norm_power": 94.0,
+   "cadence": 74.0,
+   "te_aerobic": 0.2,
+   "te_anaerobic": 0.0,
+   "te_label": "UNKNOWN"
   },
   {
    "id": 23067584760,
@@ -1528,7 +2235,14 @@
    "calories": 493.0,
    "elev_gain_m": 94.0,
    "avg_speed_kmh": 39.99,
-   "training_load": 90.4
+   "training_load": 90.4,
+   "avg_power": 162.0,
+   "max_power": 346.0,
+   "norm_power": 172.0,
+   "cadence": 71.0,
+   "te_aerobic": 3.5,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 23105597938,
@@ -1543,7 +2257,14 @@
    "calories": 447.0,
    "elev_gain_m": 156.0,
    "avg_speed_kmh": 30.82,
-   "training_load": 93.6
+   "training_load": 93.6,
+   "avg_power": 162.0,
+   "max_power": 345.0,
+   "norm_power": 171.0,
+   "cadence": 66.0,
+   "te_aerobic": 3.6,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 23141394839,
@@ -1558,7 +2279,14 @@
    "calories": 4.0,
    "elev_gain_m": 153.0,
    "avg_speed_kmh": 9.9,
-   "training_load": 57.0
+   "training_load": 57.0,
+   "avg_power": 57.0,
+   "max_power": 283.0,
+   "norm_power": 0.0,
+   "cadence": 61.0,
+   "te_aerobic": 2.9,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 23155370209,
@@ -1573,7 +2301,14 @@
    "calories": 480.0,
    "elev_gain_m": 59.0,
    "avg_speed_kmh": 2.73,
-   "training_load": 10.1
+   "training_load": 10.1,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": 45.0,
+   "te_aerobic": 1.1,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 23165263258,
@@ -1588,7 +2323,14 @@
    "calories": 2.0,
    "elev_gain_m": 0.0,
    "avg_speed_kmh": 1.33,
-   "training_load": 0.7
+   "training_load": 0.7,
+   "avg_power": 6.0,
+   "max_power": 99.0,
+   "norm_power": 26.0,
+   "cadence": 5.0,
+   "te_aerobic": 0.0,
+   "te_anaerobic": 0.0,
+   "te_label": "UNKNOWN"
   },
   {
    "id": 23166003557,
@@ -1603,7 +2345,14 @@
    "calories": 511.0,
    "elev_gain_m": 349.0,
    "avg_speed_kmh": 24.6,
-   "training_load": 99.5
+   "training_load": 99.5,
+   "avg_power": 162.0,
+   "max_power": 313.0,
+   "norm_power": 170.0,
+   "cadence": 69.0,
+   "te_aerobic": 3.7,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 23190682167,
@@ -1618,7 +2367,14 @@
    "calories": 427.0,
    "elev_gain_m": 68.0,
    "avg_speed_kmh": 4.78,
-   "training_load": 14.9
+   "training_load": 14.9,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": 85.0,
+   "te_aerobic": 1.4,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 23223974193,
@@ -1633,7 +2389,14 @@
    "calories": 347.0,
    "elev_gain_m": 308.0,
    "avg_speed_kmh": 12.9,
-   "training_load": 56.6
+   "training_load": 56.6,
+   "avg_power": 141.0,
+   "max_power": 283.0,
+   "norm_power": 149.0,
+   "cadence": 64.0,
+   "te_aerobic": 3.0,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 23236039365,
@@ -1648,7 +2411,14 @@
    "calories": 470.0,
    "elev_gain_m": 94.0,
    "avg_speed_kmh": 41.08,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 159.0,
+   "max_power": 325.0,
+   "norm_power": 167.0,
+   "cadence": 69.0,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 23271394226,
@@ -1663,7 +2433,14 @@
    "calories": 1.0,
    "elev_gain_m": 0.0,
    "avg_speed_kmh": 27.79,
-   "training_load": 0.2
+   "training_load": 0.2,
+   "avg_power": 26.0,
+   "max_power": 134.0,
+   "norm_power": 75.0,
+   "cadence": 62.0,
+   "te_aerobic": 0.0,
+   "te_anaerobic": 0.0,
+   "te_label": "UNKNOWN"
   },
   {
    "id": 23271416600,
@@ -1678,7 +2455,14 @@
    "calories": 1.0,
    "elev_gain_m": 0.0,
    "avg_speed_kmh": 27.6,
-   "training_load": 0.2
+   "training_load": 0.2,
+   "avg_power": 21.0,
+   "max_power": 147.0,
+   "norm_power": 66.0,
+   "cadence": 65.0,
+   "te_aerobic": 0.0,
+   "te_anaerobic": 0.0,
+   "te_label": "UNKNOWN"
   },
   {
    "id": 23271437914,
@@ -1693,7 +2477,14 @@
    "calories": 0.0,
    "elev_gain_m": 0.0,
    "avg_speed_kmh": 17.42,
-   "training_load": 0.1
+   "training_load": 0.1,
+   "avg_power": 4.0,
+   "max_power": 30.0,
+   "norm_power": 17.0,
+   "cadence": 56.0,
+   "te_aerobic": 0.0,
+   "te_anaerobic": 0.0,
+   "te_label": "UNKNOWN"
   },
   {
    "id": 23272018304,
@@ -1708,7 +2499,14 @@
    "calories": 359.0,
    "elev_gain_m": 209.0,
    "avg_speed_kmh": 30.58,
-   "training_load": 93.7
+   "training_load": 93.7,
+   "avg_power": 181.0,
+   "max_power": 340.0,
+   "norm_power": 188.0,
+   "cadence": 69.0,
+   "te_aerobic": 3.5,
+   "te_anaerobic": 0.3,
+   "te_label": "TEMPO"
   },
   {
    "id": 23296156021,
@@ -1723,7 +2521,14 @@
    "calories": 15.0,
    "elev_gain_m": 1.0,
    "avg_speed_kmh": 24.29,
-   "training_load": 1.9
+   "training_load": 1.9,
+   "avg_power": 26.0,
+   "max_power": 100.0,
+   "norm_power": 54.0,
+   "cadence": 20.0,
+   "te_aerobic": 0.1,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 23296717671,
@@ -1738,7 +2543,14 @@
    "calories": 463.0,
    "elev_gain_m": 402.0,
    "avg_speed_kmh": 16.81,
-   "training_load": 91.5
+   "training_load": 91.5,
+   "avg_power": 164.0,
+   "max_power": 366.0,
+   "norm_power": 174.0,
+   "cadence": 68.0,
+   "te_aerobic": 3.3,
+   "te_anaerobic": 0.3,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 23296742805,
@@ -1753,7 +2565,14 @@
    "calories": 22.0,
    "elev_gain_m": 0.0,
    "avg_speed_kmh": 0.0,
-   "training_load": 2.4
+   "training_load": 2.4,
+   "avg_power": 0.0,
+   "max_power": 0.0,
+   "norm_power": 0.0,
+   "cadence": 54.0,
+   "te_aerobic": 0.2,
+   "te_anaerobic": 0.0,
+   "te_label": "UNKNOWN"
   },
   {
    "id": 23296886641,
@@ -1768,7 +2587,14 @@
    "calories": 573.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 28.48,
-   "training_load": 85.6
+   "training_load": 85.6,
+   "avg_power": 158.0,
+   "max_power": 370.0,
+   "norm_power": 170.0,
+   "cadence": 67.0,
+   "te_aerobic": 3.3,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 23297508205,
@@ -1783,7 +2609,14 @@
    "calories": 211.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 0.0,
-   "training_load": 11.9
+   "training_load": 11.9,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": null,
+   "te_aerobic": 1.1,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 23444795894,
@@ -1798,7 +2631,14 @@
    "calories": 393.0,
    "elev_gain_m": 59.0,
    "avg_speed_kmh": 31.55,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 155.0,
+   "max_power": 337.0,
+   "norm_power": 162.0,
+   "cadence": 68.0,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 23468368287,
@@ -1813,7 +2653,14 @@
    "calories": 2298.0,
    "elev_gain_m": 78.0,
    "avg_speed_kmh": 35.69,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 145.0,
+   "max_power": 275.0,
+   "norm_power": 154.0,
+   "cadence": 66.0,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 23500269345,
@@ -1828,7 +2675,14 @@
    "calories": 428.0,
    "elev_gain_m": 126.0,
    "avg_speed_kmh": 33.0,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 147.0,
+   "max_power": 294.0,
+   "norm_power": 156.0,
+   "cadence": 66.0,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 23544839543,
@@ -1843,7 +2697,14 @@
    "calories": 329.0,
    "elev_gain_m": 59.0,
    "avg_speed_kmh": 33.72,
-   "training_load": 79.5
+   "training_load": 79.5,
+   "avg_power": 173.0,
+   "max_power": 345.0,
+   "norm_power": 179.0,
+   "cadence": 72.0,
+   "te_aerobic": 3.2,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 23559463524,
@@ -1858,7 +2719,14 @@
    "calories": 422.0,
    "elev_gain_m": 59.0,
    "avg_speed_kmh": 33.0,
-   "training_load": 91.8
+   "training_load": 91.8,
+   "avg_power": 174.0,
+   "max_power": 394.0,
+   "norm_power": 178.0,
+   "cadence": 68.0,
+   "te_aerobic": 3.4,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 23725288147,
@@ -1873,7 +2741,14 @@
    "calories": 4.0,
    "elev_gain_m": 0.0,
    "avg_speed_kmh": 23.21,
-   "training_load": 0.6
+   "training_load": 0.6,
+   "avg_power": 61.0,
+   "max_power": 144.0,
+   "norm_power": 84.0,
+   "cadence": 57.0,
+   "te_aerobic": 0.0,
+   "te_anaerobic": 0.0,
+   "te_label": "UNKNOWN"
   },
   {
    "id": 23726306409,
@@ -1888,7 +2763,14 @@
    "calories": 690.0,
    "elev_gain_m": 44.0,
    "avg_speed_kmh": 34.39,
-   "training_load": 112.4
+   "training_load": 112.4,
+   "avg_power": 153.0,
+   "max_power": 302.0,
+   "norm_power": 159.0,
+   "cadence": 66.0,
+   "te_aerobic": 3.6,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 23765022457,
@@ -1903,7 +2785,14 @@
    "calories": 414.0,
    "elev_gain_m": 175.0,
    "avg_speed_kmh": 33.79,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 150.0,
+   "max_power": 304.0,
+   "norm_power": 162.0,
+   "cadence": 62.0,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 23812527464,
@@ -1918,7 +2807,14 @@
    "calories": 52.0,
    "elev_gain_m": 19.0,
    "avg_speed_kmh": 29.27,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 136.0,
+   "max_power": 286.0,
+   "norm_power": 155.0,
+   "cadence": 63.0,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 23812728682,
@@ -1933,7 +2829,14 @@
    "calories": 308.0,
    "elev_gain_m": 31.0,
    "avg_speed_kmh": 33.37,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 151.0,
+   "max_power": 308.0,
+   "norm_power": 157.0,
+   "cadence": 67.0,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 23838866143,
@@ -1948,7 +2851,14 @@
    "calories": 315.0,
    "elev_gain_m": 58.0,
    "avg_speed_kmh": 35.6,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 162.0,
+   "max_power": 353.0,
+   "norm_power": 171.0,
+   "cadence": 67.0,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 23844968519,
@@ -1963,7 +2873,14 @@
    "calories": 162.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 0.0,
-   "training_load": null
+   "training_load": null,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": null,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 23863680490,
@@ -1978,7 +2895,14 @@
    "calories": 346.0,
    "elev_gain_m": 74.0,
    "avg_speed_kmh": 35.0,
-   "training_load": 82.3
+   "training_load": 82.3,
+   "avg_power": 176.0,
+   "max_power": 324.0,
+   "norm_power": 183.0,
+   "cadence": 65.0,
+   "te_aerobic": 3.2,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 23888832097,
@@ -1993,7 +2917,14 @@
    "calories": 0.0,
    "elev_gain_m": 0.0,
    "avg_speed_kmh": 48.5,
-   "training_load": 0.3
+   "training_load": 0.3,
+   "avg_power": 9.0,
+   "max_power": 94.0,
+   "norm_power": 31.0,
+   "cadence": 45.0,
+   "te_aerobic": 0.0,
+   "te_anaerobic": 0.0,
+   "te_label": "UNKNOWN"
   },
   {
    "id": 23888873660,
@@ -2008,7 +2939,14 @@
    "calories": 3.0,
    "elev_gain_m": 2.0,
    "avg_speed_kmh": 35.53,
-   "training_load": 0.4
+   "training_load": 0.4,
+   "avg_power": 37.0,
+   "max_power": 82.0,
+   "norm_power": 43.0,
+   "cadence": 63.0,
+   "te_aerobic": 0.0,
+   "te_anaerobic": 0.0,
+   "te_label": "UNKNOWN"
   },
   {
    "id": 23889546572,
@@ -2023,7 +2961,14 @@
    "calories": 414.0,
    "elev_gain_m": 40.0,
    "avg_speed_kmh": 33.18,
-   "training_load": 64.5
+   "training_load": 64.5,
+   "avg_power": 139.0,
+   "max_power": 305.0,
+   "norm_power": 151.0,
+   "cadence": 66.0,
+   "te_aerobic": 3.0,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 23974506077,
@@ -2038,7 +2983,14 @@
    "calories": 489.0,
    "elev_gain_m": 181.0,
    "avg_speed_kmh": 29.38,
-   "training_load": 79.3
+   "training_load": 79.3,
+   "avg_power": 146.0,
+   "max_power": 339.0,
+   "norm_power": 159.0,
+   "cadence": 63.0,
+   "te_aerobic": 3.1,
+   "te_anaerobic": 0.6,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 24011792288,
@@ -2053,7 +3005,14 @@
    "calories": 460.0,
    "elev_gain_m": 94.0,
    "avg_speed_kmh": 40.44,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 155.0,
+   "max_power": 346.0,
+   "norm_power": 169.0,
+   "cadence": 71.0,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 24063132785,
@@ -2068,7 +3027,14 @@
    "calories": 344.0,
    "elev_gain_m": 60.0,
    "avg_speed_kmh": 33.07,
-   "training_load": 46.6
+   "training_load": 46.6,
+   "avg_power": 152.0,
+   "max_power": 354.0,
+   "norm_power": 165.0,
+   "cadence": 69.0,
+   "te_aerobic": 2.6,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 24099807371,
@@ -2083,7 +3049,14 @@
    "calories": 290.0,
    "elev_gain_m": 299.0,
    "avg_speed_kmh": 23.54,
-   "training_load": 50.3
+   "training_load": 50.3,
+   "avg_power": 148.0,
+   "max_power": 328.0,
+   "norm_power": 164.0,
+   "cadence": 57.0,
+   "te_aerobic": 2.7,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 24100011566,
@@ -2098,7 +3071,14 @@
    "calories": 96.0,
    "elev_gain_m": 25.0,
    "avg_speed_kmh": 30.43,
-   "training_load": 19.7
+   "training_load": 19.7,
+   "avg_power": 141.0,
+   "max_power": 310.0,
+   "norm_power": 149.0,
+   "cadence": 61.0,
+   "te_aerobic": 1.9,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 24100027482,
@@ -2113,7 +3093,14 @@
    "calories": 472.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 24.21,
-   "training_load": 58.5
+   "training_load": 58.5,
+   "avg_power": 146.0,
+   "max_power": 322.0,
+   "norm_power": 161.0,
+   "cadence": 58.0,
+   "te_aerobic": 2.9,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 24236725483,
@@ -2128,7 +3115,14 @@
    "calories": 312.0,
    "elev_gain_m": 271.0,
    "avg_speed_kmh": 18.67,
-   "training_load": 68.4
+   "training_load": 68.4,
+   "avg_power": 153.0,
+   "max_power": 280.0,
+   "norm_power": 165.0,
+   "cadence": 56.0,
+   "te_aerobic": 3.2,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 24236845875,
@@ -2143,7 +3137,14 @@
    "calories": 391.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 18.33,
-   "training_load": 62.7
+   "training_load": 62.7,
+   "avg_power": 151.0,
+   "max_power": 274.0,
+   "norm_power": 165.0,
+   "cadence": 55.0,
+   "te_aerobic": 3.1,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 24248536144,
@@ -2158,7 +3159,14 @@
    "calories": 371.0,
    "elev_gain_m": 118.0,
    "avg_speed_kmh": 39.52,
-   "training_load": 55.1
+   "training_load": 55.1,
+   "avg_power": 149.0,
+   "max_power": 382.0,
+   "norm_power": 170.0,
+   "cadence": 71.0,
+   "te_aerobic": 3.0,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 24273677297,
@@ -2173,7 +3181,14 @@
    "calories": 401.0,
    "elev_gain_m": 255.0,
    "avg_speed_kmh": 29.67,
-   "training_load": 94.7
+   "training_load": 94.7,
+   "avg_power": 152.0,
+   "max_power": 393.0,
+   "norm_power": 172.0,
+   "cadence": 66.0,
+   "te_aerobic": 3.3,
+   "te_anaerobic": 1.9,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 24335106109,
@@ -2188,7 +3203,14 @@
    "calories": 438.0,
    "elev_gain_m": 86.0,
    "avg_speed_kmh": 37.97,
-   "training_load": 66.0
+   "training_load": 66.0,
+   "avg_power": 137.0,
+   "max_power": 431.0,
+   "norm_power": 149.0,
+   "cadence": 74.0,
+   "te_aerobic": 3.1,
+   "te_anaerobic": 0.2,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 24338171135,
@@ -2203,7 +3225,14 @@
    "calories": 427.0,
    "elev_gain_m": 27.0,
    "avg_speed_kmh": 3.32,
-   "training_load": 8.8
+   "training_load": 8.8,
+   "avg_power": null,
+   "max_power": null,
+   "norm_power": null,
+   "cadence": 60.0,
+   "te_aerobic": 1.0,
+   "te_anaerobic": 0.0,
+   "te_label": "RECOVERY"
   },
   {
    "id": 24346209607,
@@ -2218,7 +3247,14 @@
    "calories": 540.0,
    "elev_gain_m": null,
    "avg_speed_kmh": 24.77,
-   "training_load": 82.7
+   "training_load": 82.7,
+   "avg_power": 148.0,
+   "max_power": 346.0,
+   "norm_power": 164.0,
+   "cadence": 63.0,
+   "te_aerobic": 3.4,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 24346337760,
@@ -2233,7 +3269,14 @@
    "calories": 506.0,
    "elev_gain_m": 355.0,
    "avg_speed_kmh": 26.33,
-   "training_load": 98.6
+   "training_load": 98.6,
+   "avg_power": 141.0,
+   "max_power": 345.0,
+   "norm_power": 159.0,
+   "cadence": 63.0,
+   "te_aerobic": 3.6,
+   "te_anaerobic": 0.1,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 24502908286,
@@ -2248,7 +3291,14 @@
    "calories": 334.0,
    "elev_gain_m": 266.0,
    "avg_speed_kmh": 20.48,
-   "training_load": 42.8
+   "training_load": 42.8,
+   "avg_power": 125.0,
+   "max_power": 291.0,
+   "norm_power": 140.0,
+   "cadence": 60.0,
+   "te_aerobic": 2.7,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 24579501460,
@@ -2263,7 +3313,14 @@
    "calories": 58.0,
    "elev_gain_m": 0.0,
    "avg_speed_kmh": 11.88,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 49.0,
+   "max_power": 68.0,
+   "norm_power": 54.0,
+   "cadence": 48.0,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
   },
   {
    "id": 24587263227,
@@ -2278,7 +3335,14 @@
    "calories": 438.0,
    "elev_gain_m": 310.0,
    "avg_speed_kmh": 26.33,
-   "training_load": 77.6
+   "training_load": 77.6,
+   "avg_power": 136.0,
+   "max_power": 358.0,
+   "norm_power": 156.0,
+   "cadence": 68.0,
+   "te_aerobic": 3.3,
+   "te_anaerobic": 0.6,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 24664481537,
@@ -2293,7 +3357,14 @@
    "calories": 380.0,
    "elev_gain_m": 296.0,
    "avg_speed_kmh": 23.9,
-   "training_load": 65.7
+   "training_load": 65.7,
+   "avg_power": 133.0,
+   "max_power": 328.0,
+   "norm_power": 149.0,
+   "cadence": 67.0,
+   "te_aerobic": 3.2,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 24815758318,
@@ -2308,7 +3379,36 @@
    "calories": 274.0,
    "elev_gain_m": 190.0,
    "avg_speed_kmh": 27.03,
-   "training_load": null
+   "training_load": null,
+   "avg_power": 156.0,
+   "max_power": 346.0,
+   "norm_power": 174.0,
+   "cadence": 66.0,
+   "te_aerobic": null,
+   "te_anaerobic": null,
+   "te_label": null
+  },
+  {
+   "id": 24835035322,
+   "date": "2026-10-24",
+   "start": "2026-10-24 13:50:30",
+   "name": "ROUVY - Lake Pukaki | New Zealand",
+   "type": "virtual_ride",
+   "distance_km": 32.66,
+   "duration_min": 70.2,
+   "avg_hr": 116.0,
+   "max_hr": 134.0,
+   "calories": 521.0,
+   "elev_gain_m": 216.0,
+   "avg_speed_kmh": 27.93,
+   "training_load": 65.0,
+   "avg_power": 130.0,
+   "max_power": 332.0,
+   "norm_power": 148.0,
+   "cadence": 65.0,
+   "te_aerobic": 3.2,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   }
  ],
  "daily": [
@@ -6292,16 +7392,16 @@
   },
   {
    "date": "2026-10-24",
-   "steps": 67,
+   "steps": 1823,
    "step_goal": 4630,
-   "distance_km": 0.06,
-   "calories_total": 793.0,
-   "calories_active": 1.0,
-   "resting_hr": null,
-   "intensity_moderate": 0,
+   "distance_km": 34.0,
+   "calories_total": 1781.0,
+   "calories_active": 439.0,
+   "resting_hr": 66,
+   "intensity_moderate": 2,
    "intensity_vigorous": 0,
-   "floors": 0.0,
-   "avg_stress": 74
+   "floors": 3.0,
+   "avg_stress": 34
   }
  ],
  "body": [
@@ -6316,5 +7416,5 @@
    "bone_kg": null
   }
  ],
- "updated": "2026-10-24T08:33+00:00"
+ "updated": "2026-10-24T12:28+00:00"
 }
