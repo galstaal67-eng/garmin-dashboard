@@ -1,0 +1,5 @@
+__pycache__/
+.venv/
+venv/
+garmin_tokens.json
+.garminconnect/

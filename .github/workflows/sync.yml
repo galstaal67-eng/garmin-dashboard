@@ -1,0 +1,59 @@
+name: Sync Garmin data
+
+on:
+  schedule:
+    - cron: "17 3 * * *" # daily, ~06:17 Israel time
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "History to pull when data.json is empty (days)"
+        default: "365"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: garmin-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # Garmin rotates tokens on refresh, so carry the latest ones between runs.
+      - name: Restore Garmin tokens
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.garminconnect
+          key: garmin-tokens-${{ github.run_id }}
+          restore-keys: garmin-tokens-
+
+      - name: Fetch from Garmin Connect
+        env:
+          GARMIN_TOKENS: ${{ secrets.GARMIN_TOKENS }}
+          GARMIN_EMAIL: ${{ secrets.GARMIN_EMAIL }}
+          GARMIN_PASSWORD: ${{ secrets.GARMIN_PASSWORD }}
+        run: python fetch_garmin.py --days "${{ inputs.days || '365' }}"
+
+      - name: Save Garmin tokens
+        uses: actions/cache/save@v4
+        with:
+          path: ~/.garminconnect
+          key: garmin-tokens-${{ github.run_id }}
+
+      - name: Commit data
+        run: |
+          git config user.name "garmin-sync[bot]"
+          git config user.email "garmin-sync@users.noreply.github.com"
+          git add docs/data.json docs/data.js
+          git diff --cached --quiet || git commit -m "Sync Garmin data $(date -u +%F)"
+          git push
