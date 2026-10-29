@@ -7444,16 +7444,29 @@
   },
   {
    "date": "2026-10-28",
-   "steps": 17,
+   "steps": 4181,
    "step_goal": 5440,
-   "distance_km": 0.01,
-   "calories_total": 646.0,
-   "calories_active": 0.0,
-   "resting_hr": null,
+   "distance_km": 3.51,
+   "calories_total": 2187.0,
+   "calories_active": 51.0,
+   "resting_hr": 62,
    "intensity_moderate": 0,
    "intensity_vigorous": 0,
-   "floors": 0.0,
-   "avg_stress": 46
+   "floors": 8.0,
+   "avg_stress": 24
+  },
+  {
+   "date": "2026-10-29",
+   "steps": 2210,
+   "step_goal": 5320,
+   "distance_km": 1.84,
+   "calories_total": 1025.0,
+   "calories_active": 26.0,
+   "resting_hr": 63,
+   "intensity_moderate": 0,
+   "intensity_vigorous": 0,
+   "floors": 5.0,
+   "avg_stress": 29
   }
  ],
  "body": [
@@ -7468,5 +7481,5 @@
    "bone_kg": null
   }
  ],
- "updated": "2026-10-28T09:35+00:00"
+ "updated": "2026-10-29T09:52+00:00"
 }
