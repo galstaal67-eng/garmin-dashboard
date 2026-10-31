@@ -1871,6 +1871,28 @@
    "te_label": "AEROBIC_BASE"
   },
   {
+   "id": 24906082590,
+   "date": "2026-05-09",
+   "start": "2026-05-09 11:33:56",
+   "name": "Indoor Cycling",
+   "type": "indoor_cycling",
+   "distance_km": 33.75,
+   "duration_min": 94.7,
+   "avg_hr": 135.0,
+   "max_hr": 154.0,
+   "calories": 991.0,
+   "elev_gain_m": null,
+   "avg_speed_kmh": 21.38,
+   "training_load": 126.9,
+   "avg_power": 149.0,
+   "max_power": 293.0,
+   "norm_power": 157.0,
+   "cadence": 69.0,
+   "te_aerobic": 4.1,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
+  },
+  {
    "id": 22834075296,
    "date": "2026-05-10",
    "start": "2026-05-10 18:00:56",
@@ -1913,6 +1935,28 @@
    "te_aerobic": 2.1,
    "te_anaerobic": 0.0,
    "te_label": "RECOVERY"
+  },
+  {
+   "id": 24906083223,
+   "date": "2026-05-10",
+   "start": "2026-05-10 18:00:27",
+   "name": "Indoor Cycling",
+   "type": "indoor_cycling",
+   "distance_km": 12.52,
+   "duration_min": 19.5,
+   "avg_hr": 121.0,
+   "max_hr": 141.0,
+   "calories": 195.0,
+   "elev_gain_m": null,
+   "avg_speed_kmh": 38.53,
+   "training_load": 38.9,
+   "avg_power": 141.0,
+   "max_power": 290.0,
+   "norm_power": 159.0,
+   "cadence": 81.0,
+   "te_aerobic": 2.6,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   },
   {
    "id": 22855483853,
@@ -7467,6 +7511,32 @@
    "intensity_vigorous": 0,
    "floors": 15.0,
    "avg_stress": 28
+  },
+  {
+   "date": "2026-10-30",
+   "steps": 5915,
+   "step_goal": 5440,
+   "distance_km": 4.94,
+   "calories_total": 2233.0,
+   "calories_active": 97.0,
+   "resting_hr": 65,
+   "intensity_moderate": 0,
+   "intensity_vigorous": 0,
+   "floors": 11.0,
+   "avg_stress": 32
+  },
+  {
+   "date": "2026-10-31",
+   "steps": 17,
+   "step_goal": 5540,
+   "distance_km": 0.02,
+   "calories_total": 876.0,
+   "calories_active": 1.0,
+   "resting_hr": null,
+   "intensity_moderate": 0,
+   "intensity_vigorous": 0,
+   "floors": 0.0,
+   "avg_stress": -1
   }
  ],
  "body": [
@@ -7481,5 +7551,5 @@
    "bone_kg": null
   }
  ],
- "updated": "2026-10-30T09:56+00:00"
+ "updated": "2026-10-31T09:33+00:00"
 }
