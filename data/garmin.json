@@ -3453,6 +3453,28 @@
    "te_aerobic": 3.2,
    "te_anaerobic": 0.0,
    "te_label": "AEROBIC_BASE"
+  },
+  {
+   "id": 24997180369,
+   "date": "2026-11-07",
+   "start": "2026-11-07 13:29:49",
+   "name": "ROUVY - Toudgha El Oulia | Morocco",
+   "type": "virtual_ride",
+   "distance_km": 41.8,
+   "duration_min": 84.4,
+   "avg_hr": 124.0,
+   "max_hr": 146.0,
+   "calories": 659.0,
+   "elev_gain_m": 382.0,
+   "avg_speed_kmh": 29.7,
+   "training_load": 111.6,
+   "avg_power": 136.0,
+   "max_power": 351.0,
+   "norm_power": 151.0,
+   "cadence": 68.0,
+   "te_aerobic": 3.8,
+   "te_anaerobic": 0.5,
+   "te_label": "AEROBIC_BASE"
   }
  ],
  "daily": [
@@ -7602,6 +7624,32 @@
    "intensity_vigorous": 0,
    "floors": 12.0,
    "avg_stress": 54
+  },
+  {
+   "date": "2026-11-07",
+   "steps": 3199,
+   "step_goal": 4120,
+   "distance_km": 44.46,
+   "calories_total": 2920.0,
+   "calories_active": 784.0,
+   "resting_hr": 68,
+   "intensity_moderate": 35,
+   "intensity_vigorous": 0,
+   "floors": 9.0,
+   "avg_stress": 43
+  },
+  {
+   "date": "2026-11-08",
+   "steps": 83,
+   "step_goal": 3940,
+   "distance_km": 0.07,
+   "calories_total": 748.0,
+   "calories_active": 1.0,
+   "resting_hr": null,
+   "intensity_moderate": 0,
+   "intensity_vigorous": 0,
+   "floors": 0.0,
+   "avg_stress": 33
   }
  ],
  "body": [
@@ -7616,5 +7664,5 @@
    "bone_kg": null
   }
  ],
- "updated": "2026-11-07T09:59+00:00"
+ "updated": "2026-11-08T10:13+00:00"
 }
