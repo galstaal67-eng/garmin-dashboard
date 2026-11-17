@@ -3497,6 +3497,28 @@
    "te_aerobic": 3.0,
    "te_anaerobic": 0.0,
    "te_label": "AEROBIC_BASE"
+  },
+  {
+   "id": 25109354746,
+   "date": "2026-11-17",
+   "start": "2026-11-17 16:49:16",
+   "name": "ROUVY - Teguise to Montana Tinache | Lanzarote",
+   "type": "virtual_ride",
+   "distance_km": 17.05,
+   "duration_min": 34.3,
+   "avg_hr": 126.0,
+   "max_hr": 144.0,
+   "calories": 278.0,
+   "elev_gain_m": 147.0,
+   "avg_speed_kmh": 29.85,
+   "training_load": 55.5,
+   "avg_power": 141.0,
+   "max_power": 312.0,
+   "norm_power": 159.0,
+   "cadence": 64.0,
+   "te_aerobic": 3.0,
+   "te_anaerobic": 0.0,
+   "te_label": "AEROBIC_BASE"
   }
  ],
  "daily": [
@@ -7779,16 +7801,16 @@
   },
   {
    "date": "2026-11-17",
-   "steps": 66,
+   "steps": 2839,
    "step_goal": 4010,
-   "distance_km": 0.06,
-   "calories_total": 668.0,
-   "calories_active": 10.0,
-   "resting_hr": null,
+   "distance_km": 19.41,
+   "calories_total": 1682.0,
+   "calories_active": 290.0,
+   "resting_hr": 67,
    "intensity_moderate": 0,
    "intensity_vigorous": 0,
-   "floors": 0.0,
-   "avg_stress": 57
+   "floors": 3.0,
+   "avg_stress": 38
   }
  ],
  "body": [
@@ -7803,5 +7825,5 @@
    "bone_kg": null
   }
  ],
- "updated": "2026-11-17T11:45+00:00"
+ "updated": "2026-11-17T15:41+00:00"
 }
