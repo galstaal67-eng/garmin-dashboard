@@ -3519,6 +3519,72 @@
    "te_aerobic": 3.0,
    "te_anaerobic": 0.0,
    "te_label": "AEROBIC_BASE"
+  },
+  {
+   "id": 25142329913,
+   "date": "2026-11-20",
+   "start": "2026-11-20 17:17:10",
+   "name": "ROUVY - San Bartolomé to Tijano | Lanzarote",
+   "type": "virtual_ride",
+   "distance_km": 1.3,
+   "duration_min": 3.1,
+   "avg_hr": 90.0,
+   "max_hr": 108.0,
+   "calories": 12.0,
+   "elev_gain_m": 1.0,
+   "avg_speed_kmh": 24.78,
+   "training_load": 1.8,
+   "avg_power": 67.0,
+   "max_power": 231.0,
+   "norm_power": 90.0,
+   "cadence": 47.0,
+   "te_aerobic": 0.2,
+   "te_anaerobic": 0.0,
+   "te_label": "UNKNOWN"
+  },
+  {
+   "id": 25142375711,
+   "date": "2026-11-20",
+   "start": "2026-11-20 17:24:29",
+   "name": "ROUVY - Indus valley | india",
+   "type": "virtual_ride",
+   "distance_km": 0.38,
+   "duration_min": 1.1,
+   "avg_hr": 83.0,
+   "max_hr": 89.0,
+   "calories": 3.0,
+   "elev_gain_m": 4.0,
+   "avg_speed_kmh": 21.04,
+   "training_load": 0.3,
+   "avg_power": 43.0,
+   "max_power": 119.0,
+   "norm_power": 52.0,
+   "cadence": 38.0,
+   "te_aerobic": 0.0,
+   "te_anaerobic": 0.0,
+   "te_label": "UNKNOWN"
+  },
+  {
+   "id": 25142874622,
+   "date": "2026-11-20",
+   "start": "2026-11-20 17:26:35",
+   "name": "ROUVY - San Bartolomé to Tijano | Lanzarote",
+   "type": "virtual_ride",
+   "distance_km": 22.4,
+   "duration_min": 48.5,
+   "avg_hr": 129.0,
+   "max_hr": 143.0,
+   "calories": 388.0,
+   "elev_gain_m": 238.0,
+   "avg_speed_kmh": 27.71,
+   "training_load": 73.4,
+   "avg_power": 140.0,
+   "max_power": 321.0,
+   "norm_power": 158.0,
+   "cadence": 66.0,
+   "te_aerobic": 3.2,
+   "te_anaerobic": 0.6,
+   "te_label": "AEROBIC_BASE"
   }
  ],
  "daily": [
@@ -7840,16 +7906,16 @@
   },
   {
    "date": "2026-11-20",
-   "steps": 33,
+   "steps": 1743,
    "step_goal": 3950,
-   "distance_km": 0.03,
-   "calories_total": 1078.0,
-   "calories_active": 0.0,
-   "resting_hr": null,
+   "distance_km": 25.53,
+   "calories_total": 1898.0,
+   "calories_active": 368.0,
+   "resting_hr": 67,
    "intensity_moderate": 0,
    "intensity_vigorous": 0,
-   "floors": 0.0,
-   "avg_stress": 63
+   "floors": 2.0,
+   "avg_stress": 31
   }
  ],
  "body": [
@@ -7864,5 +7930,5 @@
    "bone_kg": null
   }
  ],
- "updated": "2026-11-20T11:28+00:00"
+ "updated": "2026-11-20T17:18+00:00"
 }
